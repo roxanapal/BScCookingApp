@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">CookingApp</string>
 
-    <string name="login_username_hint">Nume utilizator</string>
-    <string name="login_password_hint">Parola</string>
-    <string name="login_tv_title">Login</string>
+    <string name="username_hint">Nume utilizator</string>
+    <string name="password_hint">Parola</string>
+    <string name="email_hint">Email</string>
+
+    <string name="login_tv_title">LearnEAT</string>
     <string name="login_btn_label">Sign In</string>
+    <string name="login_tv_register">Inregistreaza-te</string>
+    <string name="sign_up_title_toolbar">SignUp</string>
+    <string name="sign_up_title">Completeaza datele de mai jos si creeaza un cont!</string>
 </resources>
