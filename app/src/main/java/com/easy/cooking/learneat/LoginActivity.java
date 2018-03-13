@@ -1,4 +1,4 @@
-package com.easy.cooking.bsccookingapp;
+package com.easy.cooking.learneat;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;

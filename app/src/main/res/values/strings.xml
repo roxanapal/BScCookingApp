@@ -10,4 +10,8 @@
     <string name="login_tv_register">Inregistreaza-te</string>
     <string name="sign_up_title_toolbar">SignUp</string>
     <string name="sign_up_title">Completeaza datele de mai jos si creeaza un cont!</string>
+    <string name="sign_up_username_error">Complete the username field</string>
+    <string name="sign_up_password_error">Complete the password field</string>
+    <string name="sign_up_email_error">Complete the email field</string>
+    <string name="sign_up_user_created_toast">Your user is created.</string>
 </resources>

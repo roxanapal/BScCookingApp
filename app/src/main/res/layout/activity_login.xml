@@ -4,22 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.easy.cooking.bsccookingapp.LoginActivity">
+    tools:context="com.easy.cooking.learneat.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
 
-        <TextView
+        <ImageView
             android:id="@+id/tv_login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin_huge"
-            android:text="@string/login_tv_title"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/font_size_huge" />
+            android:src="@drawable/learn_eat_logo" />
 
         <ImageView
             android:id="@+id/iv_login"

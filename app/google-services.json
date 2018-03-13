@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "531903373782",
+    "firebase_url": "https://learn-eat-app.firebaseio.com",
+    "project_id": "learn-eat-app",
+    "storage_bucket": "learn-eat-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531903373782:android:c420b66b38c4dfb5",
+        "android_client_info": {
+          "package_name": "com.easy.cooking.learneat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531903373782-5vrclvcr2qgilt9fvbn0f9c54qj8rigc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiPCQhDCp6Mmp6eGS9bVxcA1bcSzrK21U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
