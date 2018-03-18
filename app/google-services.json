@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "531903373782-l443c835rhh31h8ut4kl3dc5id1m5s4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easy.cooking.learneat",
+            "certificate_hash": "347249b067c17ed52894cded515e45f28330702a"
+          }
+        },
+        {
           "client_id": "531903373782-5vrclvcr2qgilt9fvbn0f9c54qj8rigc.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531903373782-5vrclvcr2qgilt9fvbn0f9c54qj8rigc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

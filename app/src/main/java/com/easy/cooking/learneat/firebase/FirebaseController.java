@@ -1,3 +1,4 @@
+/*
 package com.easy.cooking.learneat.firebase;
 
 import android.util.Log;
@@ -9,12 +10,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+*/
 /**
  * Created by roxan on 3/13/2018.
- */
+ *//*
+
 
 public class FirebaseController {
-    public static final String TAG = "FirebaseController";
+    private static final String TAG = "FirebaseController";
     private final String TABLE_NAME_USER = "users";
 
     private FirebaseDatabase firebaseDatabase;
@@ -26,6 +29,7 @@ public class FirebaseController {
     // Constructor
     private FirebaseController() {
         firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference(TABLE_NAME_USER);
     }
 
     // Get instance method
@@ -45,7 +49,6 @@ public class FirebaseController {
             return insertResponse;
         }
 
-        databaseReference = firebaseDatabase.getReference(TABLE_NAME_USER);
         if (user.getId() == null || user.getId().trim().isEmpty()) {
             user.setId(databaseReference.push().getKey());
         }
@@ -60,7 +63,7 @@ public class FirebaseController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if(user != null) {
+                if (user != null) {
                     insertResponse = true;
                     Log.i(TAG, "Updated user " + user.toString());
                 }
@@ -73,4 +76,9 @@ public class FirebaseController {
         });
     }
 
+    public void getUserByUsername(String username){
+
+    }
+
 }
+*/
