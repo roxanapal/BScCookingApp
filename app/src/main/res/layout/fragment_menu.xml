@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/padding_large">
+
+        <ImageView
+            android:id="@+id/menu_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            tools:src="@drawable/avatar_female" />
+
+        <TextView
+            android:id="@+id/menu_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/menu_avatar"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_medium"
+            android:paddingTop="@dimen/padding_large"
+            tools:text="roxana.pal" />
+
+        <TextView
+            android:id="@+id/menu_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/menu_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_medium"
+            android:text="roxanac.pal@gmail.com" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_xlarge">
+
+                <TextView
+                    android:id="@+id/tv_menu_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:layout_marginStart="@dimen/margin_default"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:fontFamily="Roboto"
+                    android:text="0"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <TextView
+                    android:id="@+id/tv_menu_points_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:layout_toRightOf="@id/tv_menu_points"
+                    android:text="@string/menu_tv_points_label"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <TextView
+                    android:id="@+id/tv_menu_status_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_menu_points"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:layout_marginStart="@dimen/margin_default"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:text="@string/menu_tv_status_label"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <TextView
+                    android:id="@+id/tv_menu_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_menu_points"
+                    android:layout_marginBottom="@dimen/margin_default"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:layout_toEndOf="@id/tv_menu_status_label"
+                    android:text="Invatacel"
+                    android:textSize="@dimen/font_size_medium" />
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_huge"
+                android:layout_marginStart="@dimen/margin_huge"
+                android:layout_marginTop="@dimen/margin_default"
+                android:background="@drawable/mybutton"
+                android:padding="@dimen/padding_default"
+                android:text="@string/menu_sfaturi_bucatari_celebri"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_medium" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_huge"
+                android:layout_marginStart="@dimen/margin_huge"
+                android:layout_marginTop="@dimen/margin_large"
+                android:background="@drawable/mybutton"
+                android:padding="@dimen/padding_default"
+                android:text="@string/menu_help_btn"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_medium" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
