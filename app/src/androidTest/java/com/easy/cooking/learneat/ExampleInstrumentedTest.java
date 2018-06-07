@@ -1,4 +1,4 @@
-package com.easy.cooking.bsccookingapp;
+package com.easy.cooking.learneat;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

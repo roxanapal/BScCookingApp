@@ -1,4 +1,4 @@
-package com.easy.cooking.bsccookingapp;
+package com.easy.cooking.learneat;
 
 import org.junit.Test;
 

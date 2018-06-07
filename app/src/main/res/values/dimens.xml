@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_default">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_xlarge">24dp</dimen>
+    <dimen name="margin_huge">32dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_default">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_xlarge">24dp</dimen>
+
+    <!-- Font sizes -->
+    <dimen name="font_size_medium">14sp</dimen>
+    <dimen name="font_size_large">22sp</dimen>
+    <dimen name="font_size_xlarge">26sp</dimen>
+    <dimen name="font_size_huge">30sp</dimen>
+
+    <!-- ImageView height -->
+    <dimen name="iv_login_height">125dp</dimen>
+
+</resources>

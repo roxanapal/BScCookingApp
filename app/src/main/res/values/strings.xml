@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">LicentaCookingApp</string>
+    <string name="app_name">LearnEAT</string>
+
+    <string name="username_hint">Nume utilizator</string>
+    <string name="password_hint">Parola</string>
+    <string name="email_hint">Email</string>
+
+    <string name="login_tv_title">LearnEAT</string>
+    <string name="login_btn_label">Sign In</string>
+    <string name="login_tv_register">Inregistreaza-te</string>
+
+    <string name="some_error">Some error</string>
+
+    <string name="sign_up_title_toolbar">SignUp</string>
+    <string name="sign_up_title">Completeaza datele de mai jos si creeaza un cont!</string>
+    <string name="sign_up_username_error">Complete the username field</string>
+    <string name="sign_up_password_error">Complete the password field</string>
+    <string name="sign_up_email_error">Complete the email field</string>
+    <string name="sign_up_user_created_toast">Contul tau de utilizator a fost creat</string>
+    <string name="sign_up_email_error_validation">Email-ul nu este valid</string>
+    <string name="sign_up_password_error_validation">Parola trebuie sa aiba cel putin 5 caractere</string>
+    <string name="sign_up_user_already_registered">Acest user exista deja!</string>
+    <string name="menu_test_name">roxana.pal</string>
+    <string name="menu_tv_points_label">puncte</string>
+    <string name="menu_tv_status_label">Status:</string>
+    <string name="menu_sfaturi_bucatari_celebri">Sfaturi bucatari celebri</string>
+    <string name="menu_help_btn">Help</string>
+
 </resources>
