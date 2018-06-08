@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.easy.cooking.learneat.MainActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/main_toolbar"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/main_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_large"
-            android:text="WELCOME, user" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/main_tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="@dimen/padding_default"
+                android:padding="@dimen/padding_xlarge"
+                android:text="Esti pregatit sa pasesti in universul bucatariei cu ajutorul aplicatiei\nLearnEAT?"
+                android:textSize="@dimen/font_size_medium" />
 
-    <FrameLayout
-        android:id="@+id/main_menu_container"
-        android:layout_width="320dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_large"
+                android:src="@drawable/salad" />
 
-</android.support.v4.widget.DrawerLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/main_menu_container"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>

@@ -1,10 +1,13 @@
 package com.easy.cooking.learneat;
 
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.easy.cooking.learneat.ui.menu.MenuFragment;
 
@@ -30,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         setMenuFragment();
     }
 
-    public void setMenuFragment(){
+    public void setMenuFragment() {
+
         menuFragment = new MenuFragment();
 
         getSupportFragmentManager().beginTransaction()
@@ -42,7 +47,22 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, 0, 0);
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+
         mainDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
 }
