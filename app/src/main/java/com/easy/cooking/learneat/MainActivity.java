@@ -1,11 +1,11 @@
 package com.easy.cooking.learneat;
 
-import android.os.PersistableBundle;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -22,8 +22,12 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_drawer_layout)
     DrawerLayout mainDrawerLayout;
 
+    @BindView(R.id.main_rv_recipe_list)
+    RecyclerView recyclerViewRecipe;
+
     private MenuFragment menuFragment;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private RecipeItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         setMenuFragment();
+    }
+
+    private void initRecyclerView() {
+        adapter = new RecipeItemAdapter(this);
+        recyclerViewRecipe.setAdapter(adapter);
     }
 
     public void setMenuFragment() {

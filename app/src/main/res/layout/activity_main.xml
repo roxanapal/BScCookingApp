@@ -31,14 +31,28 @@
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="@dimen/padding_default"
                 android:padding="@dimen/padding_xlarge"
-                android:text="Esti pregatit sa pasesti in universul bucatariei cu ajutorul aplicatiei\nLearnEAT?"
+                android:text="@string/main_title"
                 android:textSize="@dimen/font_size_medium" />
 
             <ImageView
+                android:id="@+id/main_iv_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_large"
                 android:src="@drawable/salad" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_default"
+                android:textSize="@dimen/font_size_medium"
+                android:gravity="center_horizontal"
+                android:text="Alege o reteta"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/main_rv_recipe_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
