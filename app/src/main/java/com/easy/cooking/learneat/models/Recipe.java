@@ -109,4 +109,20 @@ public class Recipe {
     public void setStepList(List<Step> stepList) {
         this.stepList = stepList;
     }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "idRecipe=" + idRecipe +
+                ", titleRecipe=" + titleRecipe +
+                ", descriptionRecipe=" + descriptionRecipe +
+                ", urlImageRecipe='" + urlImageRecipe + '\'' +
+                ", timeRecipe=" + timeRecipe +
+                ", pointsRecipe=" + pointsRecipe +
+                ", numberIngredients=" + numberIngredients +
+                ", ingredientList=" + ingredientList +
+                ", numberSteps=" + numberSteps +
+                ", stepList=" + stepList +
+                '}';
+    }
 }
