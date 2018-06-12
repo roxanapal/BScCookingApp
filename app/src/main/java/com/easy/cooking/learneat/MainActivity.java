@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -39,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private MenuFragment menuFragment;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FirebaseController firebaseController;
-    private List<Recipe> recipes;
+    private List<Recipe> recipes = new ArrayList<>();
 
-    private RecyclerView recyclerViewRecipes;
     private RecipeItemAdapter adapter;
 
     @Override
@@ -55,15 +55,10 @@ public class MainActivity extends AppCompatActivity {
         initFirebaseController();
     }
 
-    public void initToolbar(){
+    public void initToolbar() {
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-    }
-
-    private void initRecyclerView() {
-        adapter = new RecipeItemAdapter(this);
-        recyclerViewRecipe.setAdapter(adapter);
     }
 
     public void setMenuFragment() {
@@ -92,18 +87,17 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    private ValueEventListener uploadRecipesFromFirebase(){
+    private ValueEventListener uploadRecipesFromFirebase() {
         return new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 recipes = new ArrayList<>();
-                for(DataSnapshot data : dataSnapshot.getChildren()){
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Recipe recipe = data.getValue(Recipe.class);
-                    if(recipe != null) {
+                    if (recipe != null) {
                         recipes.add(recipe);
                         Log.i(TAG, "Selected recipe: " + recipe.toString());
-                    }
-                    else {
+                    } else {
                         Log.i(TAG, "Selected recipe is null");
                     }
                 }
@@ -118,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRvRecipes() {
-
+        adapter = new RecipeItemAdapter(this, recipes);
+        recyclerViewRecipe.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewRecipe.setAdapter(adapter);
     }
 
     public void initFirebaseController() {

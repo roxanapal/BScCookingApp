@@ -20,11 +20,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/main_tv_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
                 android:padding="@dimen/padding_xlarge"
                 android:text="@string/main_title"
                 android:textSize="@dimen/font_size_medium" />
-
+-->
             <ImageView
                 android:id="@+id/main_iv_image"
                 android:layout_width="match_parent"

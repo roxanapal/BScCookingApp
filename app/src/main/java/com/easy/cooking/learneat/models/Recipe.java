@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Recipe {
     private int idRecipe;
-    private int titleRecipe;
-    private int descriptionRecipe;
+    private String titleRecipe;
+    private String descriptionRecipe;
     private String urlImageRecipe;
-    private int timeRecipe;
+    private String timeRecipe;
     private int pointsRecipe;
     private int numberIngredients;
     private List<Ingredient> ingredientList;
@@ -17,7 +17,7 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(int idRecipe, int titleRecipe, int descriptionRecipe, String urlImageRecipe, int timeRecipe, int pointsRecipe, int numberIngredients, List<Ingredient> ingredientList, int numberSteps, List<Step> stepList) {
+    public Recipe(int idRecipe, String titleRecipe, String descriptionRecipe, String urlImageRecipe, String timeRecipe, int pointsRecipe, int numberIngredients, List<Ingredient> ingredientList, int numberSteps, List<Step> stepList) {
         this.idRecipe = idRecipe;
         this.titleRecipe = titleRecipe;
         this.descriptionRecipe = descriptionRecipe;
@@ -38,19 +38,19 @@ public class Recipe {
         this.idRecipe = idRecipe;
     }
 
-    public int getTitleRecipe() {
+    public String getTitleRecipe() {
         return titleRecipe;
     }
 
-    public void setTitleRecipe(int titleRecipe) {
+    public void setTitleRecipe(String titleRecipe) {
         this.titleRecipe = titleRecipe;
     }
 
-    public int getDescriptionRecipe() {
+    public String getDescriptionRecipe() {
         return descriptionRecipe;
     }
 
-    public void setDescriptionRecipe(int descriptionRecipe) {
+    public void setDescriptionRecipe(String descriptionRecipe) {
         this.descriptionRecipe = descriptionRecipe;
     }
 
@@ -62,11 +62,11 @@ public class Recipe {
         this.urlImageRecipe = urlImageRecipe;
     }
 
-    public int getTimeRecipe() {
+    public String getTimeRecipe() {
         return timeRecipe;
     }
 
-    public void setTimeRecipe(int timeRecipe) {
+    public void setTimeRecipe(String timeRecipe) {
         this.timeRecipe = timeRecipe;
     }
 

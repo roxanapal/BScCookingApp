@@ -1,18 +1,16 @@
 package com.easy.cooking.learneat.models;
 
 public class Step {
-    private int idStep;
-    private int titleStep;
-    private int descriptionStep;
+    private String titleStep;
+    private String descriptionStep;
     private String urlImageStep;
-    private int timeStep;
+    private String timeStep;
     private int pointsStep;
 
     public Step() {
     }
 
-    public Step(int idStep, int titleStep, int descriptionStep, String urlImageStep, int timeStep, int pointsStep) {
-        this.idStep = idStep;
+    public Step(String titleStep, String descriptionStep, String urlImageStep, String timeStep, int pointsStep) {
         this.titleStep = titleStep;
         this.descriptionStep = descriptionStep;
         this.urlImageStep = urlImageStep;
@@ -20,27 +18,19 @@ public class Step {
         this.pointsStep = pointsStep;
     }
 
-    public int getIdStep() {
-        return idStep;
-    }
-
-    public void setIdStep(int idStep) {
-        this.idStep = idStep;
-    }
-
-    public int getTitleStep() {
+    public String getTitleStep() {
         return titleStep;
     }
 
-    public void setTitleStep(int titleStep) {
+    public void setTitleStep(String titleStep) {
         this.titleStep = titleStep;
     }
 
-    public int getDescriptionStep() {
+    public String getDescriptionStep() {
         return descriptionStep;
     }
 
-    public void setDescriptionStep(int descriptionStep) {
+    public void setDescriptionStep(String descriptionStep) {
         this.descriptionStep = descriptionStep;
     }
 
@@ -52,11 +42,11 @@ public class Step {
         this.urlImageStep = urlImageStep;
     }
 
-    public int getTimeStep() {
+    public String getTimeStep() {
         return timeStep;
     }
 
-    public void setTimeStep(int timeStep) {
+    public void setTimeStep(String timeStep) {
         this.timeStep = timeStep;
     }
 
