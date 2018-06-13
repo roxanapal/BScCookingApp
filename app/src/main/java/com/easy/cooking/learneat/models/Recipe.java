@@ -1,8 +1,11 @@
 package com.easy.cooking.learneat.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Recipe {
+public class Recipe implements Parcelable {
     private int idRecipe;
     private String titleRecipe;
     private String descriptionRecipe;
@@ -29,6 +32,29 @@ public class Recipe {
         this.numberSteps = numberSteps;
         this.stepList = stepList;
     }
+
+    protected Recipe(Parcel in) {
+        idRecipe = in.readInt();
+        titleRecipe = in.readString();
+        descriptionRecipe = in.readString();
+        urlImageRecipe = in.readString();
+        timeRecipe = in.readString();
+        pointsRecipe = in.readInt();
+        numberIngredients = in.readInt();
+        numberSteps = in.readInt();
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 
     public int getIdRecipe() {
         return idRecipe;
@@ -124,5 +150,22 @@ public class Recipe {
                 ", numberSteps=" + numberSteps +
                 ", stepList=" + stepList +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(idRecipe);
+        dest.writeString(titleRecipe);
+        dest.writeString(descriptionRecipe);
+        dest.writeString(urlImageRecipe);
+        dest.writeString(timeRecipe);
+        dest.writeInt(pointsRecipe);
+        dest.writeInt(numberIngredients);
+        dest.writeInt(numberSteps);
     }
 }

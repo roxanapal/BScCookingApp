@@ -18,11 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--        <android.support.v4.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <!--<TextView
                 android:id="@+id/main_tv_question"
@@ -34,20 +37,19 @@
                 android:text="@string/main_title"
                 android:textSize="@dimen/font_size_medium" />
 -->
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/main_iv_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_large"
-                android:src="@drawable/salad" />
+                android:layout_height="80dp"
+                android:src="@drawable/salad" />-->
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_default"
-                android:textSize="@dimen/font_size_medium"
                 android:gravity="center_horizontal"
-                android:text="Alege o reteta"/>
+                android:padding="@dimen/padding_default"
+                android:text="Alege o reteta"
+                android:textSize="@dimen/font_size_medium" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/main_rv_recipe_list"
@@ -55,6 +57,7 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+        <!-- </android.support.v4.widget.NestedScrollView>-->
 
         <FrameLayout
             android:id="@+id/main_menu_container"

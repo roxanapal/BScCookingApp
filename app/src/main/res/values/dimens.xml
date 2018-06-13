@@ -22,4 +22,8 @@
     <!-- ImageView height -->
     <dimen name="iv_login_height">125dp</dimen>
 
+
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="card_album_radius">0dp</dimen>
+
 </resources>

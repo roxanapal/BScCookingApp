@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecipeItemAdapter(this, recipes);
         recyclerViewRecipe.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewRecipe.setAdapter(adapter);
+        recyclerViewRecipe.setNestedScrollingEnabled(false);
     }
 
     public void initFirebaseController() {

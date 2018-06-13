@@ -1,7 +1,7 @@
 package com.easy.cooking.learneat;
 
 import android.content.Context;
-import android.graphics.Movie;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.easy.cooking.learneat.models.Recipe;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,11 +40,26 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Re
 
     @Override
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
-        Recipe recipe = recipeList.get(position);
+        final Recipe recipe = recipeList.get(position);
         Picasso.get()
                 .load(recipe.getUrlImageRecipe())
                 .into(holder.ivRecipe);
-        holder.tvTitleRecipe.setText(recipe.getTimeRecipe());
+        holder.tvTitleRecipe.setText(recipe.getTitleRecipe());
+
+        String timeRecipe = recipe.getTimeRecipe() + context.getString(R.string.item_recipe_minutes_label);
+        holder.tvTimeRecipe.setText(timeRecipe);
+
+        String pointsRecipe = recipe.getPointsRecipe() + context.getString(R.string.item_recipe_points_label);
+        holder.tvPointsRecipe.setText(pointsRecipe);
+
+        holder.ivRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RecipeActivity.class);
+                intent.putExtra(RecipeActivity.EXTRA_RECIPE, recipe);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -59,6 +73,12 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Re
 
         @BindView(R.id.item_recipe_title)
         TextView tvTitleRecipe;
+
+        @BindView(R.id.item_recipe_time)
+        TextView tvTimeRecipe;
+
+        @BindView(R.id.item_recipe_points)
+        TextView tvPointsRecipe;
 
         public RecipeViewHolder(View itemView) {
             super(itemView);

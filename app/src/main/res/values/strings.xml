@@ -27,4 +27,8 @@
     <string name="menu_help_btn">Help</string>
     <string name="main_title">Esti pregatit sa pasesti in universul bucatariei cu ajutorul aplicatiei LearnEAT?</string>
 
+    <string name="item_recipe_minutes_label">&#160;minute</string>
+    <string name="item_recipe_points_label">&#160;puncte</string>
+    <string name="recipe_data_error">Eroare!</string>
+
 </resources>
