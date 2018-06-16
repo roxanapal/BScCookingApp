@@ -1,6 +1,8 @@
 package com.easy.cooking.learneat;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -12,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Recipe;
@@ -42,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_rv_recipe_list)
     RecyclerView recyclerViewRecipe;
 
-    private MenuFragment menuFragment;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FirebaseController firebaseController;
     private List<Recipe> recipes = new ArrayList<>();
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initToolbar();
-        setMenuFragment();
+        setNavigationView();
         initFirebaseController();
     }
 
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-    public void setMenuFragment() {
+    public void setNavigationView() {
         setupDrawerContent(mainNavigationView);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, 0, 0);
@@ -79,8 +81,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 menuItem.setChecked(true);
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_advice_famous_chefs:
+                        Toast.makeText(MainActivity.this, "Sfaturi Bucatari", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu_help:
+                        Toast.makeText(MainActivity.this, "Ajutor", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu_log_out:
+                        new Handler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(), "Te-ai delogat cu succes", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                        break;
+                }
                 mainDrawerLayout.closeDrawers();
-                return true;
+                return false;
             }
         });
     }
@@ -127,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecipeItemAdapter(this, recipes);
         recyclerViewRecipe.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewRecipe.setAdapter(adapter);
-        recyclerViewRecipe.setNestedScrollingEnabled(false);
     }
 
     public void initFirebaseController() {

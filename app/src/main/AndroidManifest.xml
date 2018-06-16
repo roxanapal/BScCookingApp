@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_food_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".LoginActivity" />
@@ -24,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeActivity"></activity>
+        <activity
+            android:name=".RecipeActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@
             tools:text="roxana.pal" />
 
         <TextView
-            android:id="@+id/menu_email"
+            android:id="@+id/menu_number_points"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/menu_name"

@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -77,8 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             //clear all the open activities from the stack, the user cant go back to the login activity
+                            finish();
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "Bine ai venit!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

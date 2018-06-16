@@ -30,6 +30,8 @@
     <string name="item_recipe_minutes_label">&#160;minute</string>
     <string name="item_recipe_points_label">&#160;puncte</string>
     <string name="recipe_data_error">Eroare!</string>
+    <string name="menu_home">Acasa</string>
+    <string name="menu_profile">Profil</string>
     <string name="menu_advice_chefs">Sfaturi bucatari celebri</string>
     <string name="menu_help">Ajutor</string>
     <string name="menu_logout">Delogare</string>

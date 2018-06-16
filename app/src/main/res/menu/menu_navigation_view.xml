@@ -2,18 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/advice_famous_chefs"
+            android:id="@+id/menu_home_label"
             android:checked="true"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/menu_profile_label"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/menu_profile" />
+
+        <item
+            android:id="@+id/menu_advice_famous_chefs"
             android:icon="@drawable/ic_chefs"
             android:title="@string/menu_advice_chefs" />
 
         <item
-            android:id="@+id/help"
+            android:id="@+id/menu_help"
             android:icon="@drawable/ic_help"
-            android:title="@string/menu_help"/>
+            android:title="@string/menu_help" />
 
         <item
-            android:id="@+id/log_out"
+            android:id="@+id/menu_log_out"
             android:icon="@drawable/ic_logout"
             android:title="@string/menu_logout"/>
 
