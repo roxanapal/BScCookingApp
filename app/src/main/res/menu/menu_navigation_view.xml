@@ -18,6 +18,11 @@
             android:title="@string/menu_advice_chefs" />
 
         <item
+            android:id="@+id/menu_feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/menu_feedback" />
+
+        <item
             android:id="@+id/menu_help"
             android:icon="@drawable/ic_help"
             android:title="@string/menu_help" />

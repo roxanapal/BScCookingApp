@@ -20,19 +20,6 @@ public class Recipe implements Parcelable {
     public Recipe() {
     }
 
-    public Recipe(int idRecipe, String titleRecipe, String descriptionRecipe, String urlImageRecipe, String timeRecipe, int pointsRecipe, int numberIngredients, List<Ingredient> ingredientList, int numberSteps, List<Step> stepList) {
-        this.idRecipe = idRecipe;
-        this.titleRecipe = titleRecipe;
-        this.descriptionRecipe = descriptionRecipe;
-        this.urlImageRecipe = urlImageRecipe;
-        this.timeRecipe = timeRecipe;
-        this.pointsRecipe = pointsRecipe;
-        this.numberIngredients = numberIngredients;
-        this.ingredientList = ingredientList;
-        this.numberSteps = numberSteps;
-        this.stepList = stepList;
-    }
-
     protected Recipe(Parcel in) {
         idRecipe = in.readInt();
         titleRecipe = in.readString();
@@ -41,7 +28,25 @@ public class Recipe implements Parcelable {
         timeRecipe = in.readString();
         pointsRecipe = in.readInt();
         numberIngredients = in.readInt();
+
+        ingredientList = in.createTypedArrayList(Ingredient.CREATOR);
+
         numberSteps = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(idRecipe);
+        dest.writeString(titleRecipe);
+        dest.writeString(descriptionRecipe);
+        dest.writeString(urlImageRecipe);
+        dest.writeString(timeRecipe);
+        dest.writeInt(pointsRecipe);
+        dest.writeInt(numberIngredients);
+
+        dest.writeTypedList(ingredientList);
+
+        dest.writeInt(numberSteps);
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -155,17 +160,5 @@ public class Recipe implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(idRecipe);
-        dest.writeString(titleRecipe);
-        dest.writeString(descriptionRecipe);
-        dest.writeString(urlImageRecipe);
-        dest.writeString(timeRecipe);
-        dest.writeInt(pointsRecipe);
-        dest.writeInt(numberIngredients);
-        dest.writeInt(numberSteps);
     }
 }

@@ -16,9 +16,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.easy.cooking.learneat.adapters.RecipeAdapter;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Recipe;
-import com.easy.cooking.learneat.ui.menu.MenuFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseController firebaseController;
     private List<Recipe> recipes = new ArrayList<>();
 
-    private RecipeItemAdapter adapter;
+    private RecipeAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, 0, 0);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         mainDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+    }
+
+    public void initFirebaseController() {
+        firebaseController = FirebaseController.getInstance();
+        firebaseController.getAllRecipes(uploadRecipesFromFirebase());
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -145,13 +150,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRvRecipes() {
-        adapter = new RecipeItemAdapter(this, recipes);
+        adapter = new RecipeAdapter(this, recipes);
         recyclerViewRecipe.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewRecipe.setAdapter(adapter);
-    }
-
-    public void initFirebaseController() {
-        firebaseController = FirebaseController.getInstance();
-        firebaseController.getAllRecipes(uploadRecipesFromFirebase());
     }
 }

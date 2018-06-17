@@ -1,4 +1,4 @@
-package com.easy.cooking.learneat;
+package com.easy.cooking.learneat.utils;
 
 public interface Constants {
     String LOGIN_SHARED_PREFERENCES_NAME = "loginPref";

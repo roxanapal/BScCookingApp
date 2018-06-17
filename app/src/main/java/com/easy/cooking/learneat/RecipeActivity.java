@@ -4,13 +4,21 @@ import android.content.Intent;
 import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.easy.cooking.learneat.adapters.IngredientAdapter;
+import com.easy.cooking.learneat.adapters.RecipeAdapter;
+import com.easy.cooking.learneat.models.Ingredient;
 import com.easy.cooking.learneat.models.Recipe;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +36,14 @@ public class RecipeActivity extends AppCompatActivity {
 
     @BindView(R.id.recipe_image)
     ImageView ivRecipe;
+
+    @BindView(R.id.recipe_description)
+    TextView tvDescription;
+
+    @BindView(R.id.recipe_rv_ingredients)
+    RecyclerView recyclerViewIngredients;
+
+    private IngredientAdapter ingredientAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +68,7 @@ public class RecipeActivity extends AppCompatActivity {
         }
 
         setRecipeInfo(recipe);
+        initRecyclerViewIngredients(recipe.getIngredientList());
     }
 
     private void errorMessage() {
@@ -63,5 +80,13 @@ public class RecipeActivity extends AppCompatActivity {
         Picasso.get()
                 .load(recipe.getUrlImageRecipe())
                 .into(ivRecipe);
+        tvDescription.setText(recipe.getDescriptionRecipe());
+    }
+
+    private void initRecyclerViewIngredients(List<Ingredient> ingredientList) {
+        ingredientAdapter = new IngredientAdapter(ingredientList, this);
+        recyclerViewIngredients.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewIngredients.setNestedScrollingEnabled(false);
+        recyclerViewIngredients.setAdapter(ingredientAdapter);
     }
 }

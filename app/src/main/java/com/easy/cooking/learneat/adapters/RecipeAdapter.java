@@ -1,4 +1,4 @@
-package com.easy.cooking.learneat;
+package com.easy.cooking.learneat.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.easy.cooking.learneat.R;
+import com.easy.cooking.learneat.RecipeActivity;
 import com.easy.cooking.learneat.models.Recipe;
 import com.squareup.picasso.Picasso;
 
@@ -21,12 +23,12 @@ import butterknife.ButterKnife;
  * Created by roxana on 6/9/2018.
  */
 
-public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.RecipeViewHolder> {
+public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     private List<Recipe> recipeList;
     private Context context;
 
-    public RecipeItemAdapter(Context context, List<Recipe> recipeList) {
+    public RecipeAdapter(Context context, List<Recipe> recipeList) {
         this.context = context;
         this.recipeList = recipeList;
     }

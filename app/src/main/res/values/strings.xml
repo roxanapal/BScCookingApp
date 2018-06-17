@@ -35,5 +35,8 @@
     <string name="menu_advice_chefs">Sfaturi bucatari celebri</string>
     <string name="menu_help">Ajutor</string>
     <string name="menu_logout">Delogare</string>
+    <string name="recipe_ingredients_label">Ingrediente</string>
+    <string name="recipe_btn_start_label">Incepe reteta</string>
+    <string name="menu_feedback">Feedback</string>
 
 </resources>
