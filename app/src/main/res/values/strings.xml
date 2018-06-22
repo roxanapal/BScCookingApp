@@ -39,4 +39,7 @@
     <string name="recipe_btn_start_label">Incepe reteta</string>
     <string name="menu_feedback">Feedback</string>
 
+    <string name="btn_next_step_label">Pasul urmator</string>
+    <string name="cacat">CACAT</string>
+
 </resources>

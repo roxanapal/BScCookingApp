@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.easy.cooking.learneat.R;
 import com.easy.cooking.learneat.RecipeActivity;
 import com.easy.cooking.learneat.models.Recipe;
+import com.easy.cooking.learneat.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -58,7 +59,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, RecipeActivity.class);
-                intent.putExtra(RecipeActivity.EXTRA_RECIPE, recipe);
+                intent.putExtra(Constants.EXTRA_RECIPE, recipe);
                 context.startActivity(intent);
             }
         });

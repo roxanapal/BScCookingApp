@@ -1,6 +1,10 @@
 package com.easy.cooking.learneat.models;
 
-public class Step {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Step implements Parcelable {
+    private int stepNumber;
     private String titleStep;
     private String descriptionStep;
     private String urlImageStep;
@@ -10,12 +14,33 @@ public class Step {
     public Step() {
     }
 
-    public Step(String titleStep, String descriptionStep, String urlImageStep, String timeStep, int pointsStep) {
-        this.titleStep = titleStep;
-        this.descriptionStep = descriptionStep;
-        this.urlImageStep = urlImageStep;
-        this.timeStep = timeStep;
-        this.pointsStep = pointsStep;
+    protected Step(Parcel in) {
+        stepNumber = in.readInt();
+        titleStep = in.readString();
+        descriptionStep = in.readString();
+        urlImageStep = in.readString();
+        timeStep = in.readString();
+        pointsStep = in.readInt();
+    }
+
+    public static final Creator<Step> CREATOR = new Creator<Step>() {
+        @Override
+        public Step createFromParcel(Parcel in) {
+            return new Step(in);
+        }
+
+        @Override
+        public Step[] newArray(int size) {
+            return new Step[size];
+        }
+    };
+
+    public int getStepNumber() {
+        return stepNumber;
+    }
+
+    public void setStepNumber(int stepNumber) {
+        this.stepNumber = stepNumber;
     }
 
     public String getTitleStep() {
@@ -56,5 +81,20 @@ public class Step {
 
     public void setPointsStep(int pointsStep) {
         this.pointsStep = pointsStep;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(stepNumber);
+        dest.writeString(titleStep);
+        dest.writeString(descriptionStep);
+        dest.writeString(urlImageStep);
+        dest.writeString(timeStep);
+        dest.writeInt(pointsStep);
     }
 }
