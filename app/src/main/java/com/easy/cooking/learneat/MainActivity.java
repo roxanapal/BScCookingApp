@@ -2,7 +2,6 @@ package com.easy.cooking.learneat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import com.easy.cooking.learneat.adapters.RecipeAdapter;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Recipe;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -46,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerViewRecipe;
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private FirebaseController firebaseController;
-    private List<Recipe> recipes = new ArrayList<>();
 
+    private FirebaseAuth mAuth;
+
+    private List<Recipe> recipes = new ArrayList<>();
     private RecipeAdapter adapter;
 
     @Override
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
         initToolbar();
         setNavigationView();
@@ -77,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initFirebaseController() {
-        firebaseController = FirebaseController.getInstance();
-        firebaseController.getAllRecipes(uploadRecipesFromFirebase());
+        FirebaseController firebaseController = FirebaseController.getInstance();
+        firebaseController.getAllRecipes(getRecipesFromFirebase());
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -87,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
+                    case R.id.menu_profile_label:
+                        Intent intentProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intentProfile);
                     case R.id.menu_advice_famous_chefs:
                         Toast.makeText(MainActivity.this, "Sfaturi Bucatari", Toast.LENGTH_SHORT).show();
                         break;
@@ -94,15 +100,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Ajutor", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_log_out:
-                        new Handler().post(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                startActivity(intent);
-                                Toast.makeText(getApplicationContext(), "Te-ai delogat cu succes", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        });
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Te-ai delogat cu succes", Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
                 }
                 mainDrawerLayout.closeDrawers();
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    private ValueEventListener uploadRecipesFromFirebase() {
+    private ValueEventListener getRecipesFromFirebase() {
         return new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

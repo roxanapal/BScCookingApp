@@ -18,10 +18,11 @@ import com.easy.cooking.learneat.utils.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StepActivity extends AppCompatActivity implements StepFragment.OnFragmentInteractionListener{
+public class StepActivity extends AppCompatActivity implements StepFragment.OnFragmentInteractionListener {
 
     @BindView(R.id.steps_toolbar)
     Toolbar stepsToolbar;
+
     private Recipe recipe;
 
     @Override
@@ -47,7 +48,9 @@ public class StepActivity extends AppCompatActivity implements StepFragment.OnFr
             return;
         }
 
-        switchFragment(recipe.getStepList().get(0));
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.step_frame_layout, StepFragment.newInstance(recipe.getStepList().get(0)))
+                .commit();
     }
 
     private void showErrorMessage() {
@@ -58,18 +61,27 @@ public class StepActivity extends AppCompatActivity implements StepFragment.OnFr
         // FragmentManager and transaction to add the fragment to the screen
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .add(R.id.step_frame_layout, StepFragment.newInstance(step))
+                .replace(R.id.step_frame_layout, StepFragment.newInstance(step))
                 .commit();
     }
 
     @Override
-    public void showNextStep(Step step) {
+    public void showNextStep(Step currentStep) {
         Step nextStep = null;
-        for (int i = 0; i < recipe.getStepList().size()-1; i++) {
-            if (step.getStepNumber() == i) {
-                nextStep = recipe.getStepList().get(i);
+
+        if(currentStep.getStepNumber() <= recipe.getStepList().size()-1){
+
+            for (Step step : recipe.getStepList()) {
+                if (step.getStepNumber() <= currentStep.getStepNumber()) {
+                    continue;
+                }
+                nextStep = step;
+                break;
             }
+
+            switchFragment(nextStep);
+        } else {
+            Toast.makeText(this, getString(R.string.recipe_final_toast) + recipe.getTitleRecipe() + "!", Toast.LENGTH_SHORT).show();
         }
-        switchFragment(nextStep);
     }
 }

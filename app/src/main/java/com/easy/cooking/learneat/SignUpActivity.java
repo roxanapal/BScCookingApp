@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,6 +48,9 @@ public class SignUpActivity extends AppCompatActivity {
     Button btnSignUp;
 
     private FirebaseAuth mAuth;
+    private String username;
+    private String email;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,13 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         setToolbar(toolbar);
+    }
+
+    public void initFirebaseController() {
+        FirebaseController firebaseController = FirebaseController.getInstance();
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        User user = new User(firebaseUser.getUid(), username, password, email);
+        firebaseController.addUserToRealtimeDatabase(user);
     }
 
     /**
@@ -71,9 +82,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean validate() {
-        String username = etUsername.getText().toString();
-        String password = etPassword.getText().toString();
-        String email = etEmail.getText().toString();
+        username = etUsername.getText().toString();
+        password = etPassword.getText().toString();
+        email = etEmail.getText().toString();
 
         if (username.isEmpty()) {
             Toast.makeText(this, R.string.sign_up_username_error, Toast.LENGTH_SHORT).show();
@@ -111,6 +122,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void onClickToSignUp(View view) {
         if (validate()) {
             registerUser();
+            initFirebaseController();
         }
     }
 

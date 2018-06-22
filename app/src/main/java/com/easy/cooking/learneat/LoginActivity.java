@@ -16,11 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.easy.cooking.learneat.firebase.FirebaseController;
+import com.easy.cooking.learneat.models.User;
 import com.easy.cooking.learneat.utils.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validate()) {
+                if (validate()) {
                     userLogin();
                 }
             }
@@ -72,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void initPreferences() {

@@ -28,6 +28,8 @@
 
     <!-- ImageView height -->
     <dimen name="iv_login_height">125dp</dimen>
+    <dimen name="iv_step_height">200dp</dimen>
+    <dimen name="iv_profile_height">200dp</dimen>
 
 
     <dimen name="icon_size">24dp</dimen>

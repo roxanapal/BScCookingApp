@@ -5,6 +5,7 @@ package com.easy.cooking.learneat.models;
  */
 
 public class User {
+    private String uid;
     private String username;
     private String password;
     private String email;
@@ -16,6 +17,21 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public User(String uid, String username, String password, String email) {
+        this.uid = uid;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {

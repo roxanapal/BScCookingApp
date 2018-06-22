@@ -32,6 +32,7 @@ public class Recipe implements Parcelable {
         ingredientList = in.createTypedArrayList(Ingredient.CREATOR);
 
         numberSteps = in.readInt();
+        stepList = in.createTypedArrayList(Step.CREATOR);
     }
 
     @Override
@@ -47,6 +48,7 @@ public class Recipe implements Parcelable {
         dest.writeTypedList(ingredientList);
 
         dest.writeInt(numberSteps);
+        dest.writeTypedList(stepList);
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {

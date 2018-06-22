@@ -20,17 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SignUpActivity"
-            android:parentActivityName=".LoginActivity"/>
-
-        <activity android:name=".MainActivity"/>
-
+            android:parentActivityName=".LoginActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".RecipeActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".StepActivity" />
+        <activity
+            android:name=".StepActivity"
+            android:parentActivityName=".RecipeActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

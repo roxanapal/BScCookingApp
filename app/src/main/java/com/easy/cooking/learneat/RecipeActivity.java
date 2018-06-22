@@ -44,8 +44,6 @@ public class RecipeActivity extends AppCompatActivity {
     @BindView(R.id.recipe_btn_start)
     Button btnStartRecipe;
 
-    private Context context = RecipeActivity.this;
-
     private IngredientAdapter ingredientAdapter;
 
     @Override

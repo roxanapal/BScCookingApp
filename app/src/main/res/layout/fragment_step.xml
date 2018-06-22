@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +10,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textSize="@dimen/font_size_headline"
+        android:padding="@dimen/padding_large"
         tools:text="Titlu" />
+
+    <TextView
+        android:id="@+id/tv_step_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/font_size_subhead"
+        tools:text="40 puncte" />
+
+    <TextView
+        android:id="@+id/tv_step_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_large"
+        android:textSize="@dimen/font_size_large"
+        tools:text="Description" />
+
+    <ImageView
+        android:id="@+id/iv_step_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_step_height"
+        android:layout_margin="@dimen/margin_large"
+        tools:src="@drawable/spaghete_carbonara" />
 
     <Button
         android:id="@+id/btn_next_step"
