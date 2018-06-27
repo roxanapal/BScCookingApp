@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,9 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_login)
     Button btnLogin;
 
+    @BindView(R.id.iv_login_information)
+    ImageView ivInformation;
+
     @BindView(R.id.login_progressbar)
     ProgressBar progressBar;
 
@@ -58,6 +62,14 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         initPreferences();
+
+        ivInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentInformation = new Intent(getApplicationContext(), HelpActivity.class);
+                startActivity(intentInformation);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

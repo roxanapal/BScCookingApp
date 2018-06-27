@@ -42,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void initToolbar() {
-        profileToolbar.setTitle(R.string.toolbar_title_profile);
+        profileToolbar.setTitle(R.string.menu_profile);
         setSupportActionBar(profileToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/item_recipe_image"
         tools:text="Spaghete carbonara" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/item_recipe_time_icon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
@@ -79,5 +79,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_recipe_points_icon"
         app:layout_constraintTop_toTopOf="@+id/item_recipe_points_icon"
-        tools:text="100 puncte" />
+        tools:text="100 puncte" />-->
 </android.support.constraint.ConstraintLayout>

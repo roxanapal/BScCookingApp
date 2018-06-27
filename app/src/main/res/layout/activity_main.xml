@@ -19,10 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--        <android.support.v4.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,13 +48,19 @@
                 android:text="Alege o reteta"
                 android:textSize="@dimen/font_size_medium" />
 
+            <ProgressBar
+                android:id="@+id/main_progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/main_rv_recipe_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
-        <!-- </android.support.v4.widget.NestedScrollView>-->
 
         <android.support.design.widget.NavigationView
             android:id="@+id/main_navigation_view"

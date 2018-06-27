@@ -33,6 +33,15 @@
         <activity
             android:name=".ProfileActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AdviceActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".HelpActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".FeedbackActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

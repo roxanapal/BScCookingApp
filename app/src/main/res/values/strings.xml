@@ -37,11 +37,10 @@
     <string name="menu_logout">Delogare</string>
     <string name="recipe_ingredients_label">Ingrediente</string>
     <string name="recipe_btn_start_label">Incepe reteta</string>
-    <string name="menu_feedback">Feedback</string>
+    <string name="menu_feedback">Oferă Feedback</string>
 
     <string name="btn_next_step_label">Pasul urmator</string>
     <string name="recipe_final_toast">Felicitări, ai terminat rețeta &#160;</string>
-    <string name="toolbar_title_profile">Profil</string>
 
 
 </resources>

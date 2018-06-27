@@ -26,8 +26,9 @@
     <dimen name="line_height_body1">20dp</dimen>
     <dimen name="line_height_title">28dp</dimen>
 
-    <!-- ImageView height -->
-    <dimen name="iv_login_height">125dp</dimen>
+    <!-- ImageView dimens -->
+    <dimen name="iv_login_width">250dp</dimen>
+    <dimen name="iv_login_height">150dp</dimen>
     <dimen name="iv_step_height">200dp</dimen>
     <dimen name="iv_profile_height">200dp</dimen>
 

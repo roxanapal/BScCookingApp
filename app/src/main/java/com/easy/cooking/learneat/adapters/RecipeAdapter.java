@@ -49,11 +49,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 .into(holder.ivRecipe);
         holder.tvTitleRecipe.setText(recipe.getTitleRecipe());
 
-        String timeRecipe = recipe.getTimeRecipe() + context.getString(R.string.item_recipe_minutes_label);
+        /*String timeRecipe = recipe.getTimeRecipe() + context.getString(R.string.item_recipe_minutes_label);
         holder.tvTimeRecipe.setText(timeRecipe);
 
         String pointsRecipe = recipe.getPointsRecipe() + context.getString(R.string.item_recipe_points_label);
-        holder.tvPointsRecipe.setText(pointsRecipe);
+        holder.tvPointsRecipe.setText(pointsRecipe);*/
 
         holder.ivRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,11 +77,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         @BindView(R.id.item_recipe_title)
         TextView tvTitleRecipe;
 
-        @BindView(R.id.item_recipe_time)
+       /* @BindView(R.id.item_recipe_time)
         TextView tvTimeRecipe;
 
         @BindView(R.id.item_recipe_points)
-        TextView tvPointsRecipe;
+        TextView tvPointsRecipe;*/
 
         public RecipeViewHolder(View itemView) {
             super(itemView);

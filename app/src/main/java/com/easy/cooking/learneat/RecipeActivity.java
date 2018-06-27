@@ -3,6 +3,7 @@ package com.easy.cooking.learneat;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,6 +45,9 @@ public class RecipeActivity extends AppCompatActivity {
     @BindView(R.id.recipe_btn_start)
     Button btnStartRecipe;
 
+    @BindView(R.id.recipe_scrollview)
+    NestedScrollView nestedScrollView;
+
     private IngredientAdapter ingredientAdapter;
 
     @Override
@@ -51,6 +55,8 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         ButterKnife.bind(this);
+
+        recyclerViewIngredients.setFocusable(false);
 
         setSupportActionBar(recipeToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -13,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.easy.cooking.learneat.adapters.RecipeAdapter;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.main_rv_recipe_list)
     RecyclerView recyclerViewRecipe;
+
+    @BindView(R.id.main_progressbar)
+    ProgressBar mainProgressBar;
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
@@ -93,11 +98,20 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_profile_label:
                         Intent intentProfile = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(intentProfile);
+                        break;
                     case R.id.menu_advice_famous_chefs:
                         Toast.makeText(MainActivity.this, "Sfaturi Bucatari", Toast.LENGTH_SHORT).show();
+                        Intent intentAdvice = new Intent(getApplicationContext(), AdviceActivity.class);
+                        startActivity(intentAdvice);
+                        break;
+                    case R.id.menu_feedback:
+                        Intent intentFeedback = new Intent(getApplicationContext(), FeedbackActivity.class);
+                        startActivity(intentFeedback);
                         break;
                     case R.id.menu_help:
                         Toast.makeText(MainActivity.this, "Ajutor", Toast.LENGTH_SHORT).show();
+                        Intent intentHelp = new Intent(getApplicationContext(), HelpActivity.class);
+                        startActivity(intentHelp);
                         break;
                     case R.id.menu_log_out:
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -127,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ValueEventListener getRecipesFromFirebase() {
+        mainProgressBar.setVisibility(View.VISIBLE);
         return new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -154,5 +169,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecipeAdapter(this, recipes);
         recyclerViewRecipe.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewRecipe.setAdapter(adapter);
+        mainProgressBar.setVisibility(View.GONE);
     }
 }
