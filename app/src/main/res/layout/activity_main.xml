@@ -44,8 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:padding="@dimen/padding_default"
-                android:text="Alege o reteta"
+                android:padding="@dimen/padding_large"
+                android:text="Alege o rețetă"
                 android:textSize="@dimen/font_size_medium" />
 
             <ProgressBar

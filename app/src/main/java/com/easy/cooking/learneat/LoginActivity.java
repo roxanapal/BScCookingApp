@@ -145,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
-                            Toast.makeText(getApplicationContext(), "Bine ai venit!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.login_welcome_message, Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

@@ -30,17 +30,19 @@
     <string name="item_recipe_minutes_label">&#160;minute</string>
     <string name="item_recipe_points_label">&#160;puncte</string>
     <string name="recipe_data_error">Eroare!</string>
+
     <string name="menu_home">Acasa</string>
     <string name="menu_profile">Profil</string>
     <string name="menu_advice_chefs">Sfaturi bucatari celebri</string>
-    <string name="menu_help">Ajutor</string>
-    <string name="menu_logout">Delogare</string>
+    <string name="menu_help">Despre</string>
+    <string name="menu_logout">Deconectare</string>
     <string name="recipe_ingredients_label">Ingrediente</string>
     <string name="recipe_btn_start_label">Incepe reteta</string>
     <string name="menu_feedback">Oferă Feedback</string>
 
     <string name="btn_next_step_label">Pasul urmator</string>
     <string name="recipe_final_toast">Felicitări, ai terminat rețeta &#160;</string>
+    <string name="login_welcome_message">Bine ai venit!</string>
 
 
 </resources>

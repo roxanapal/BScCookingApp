@@ -5,16 +5,18 @@ public class Advice {
     private String nameChef;
     private String descriptionAdvice;
     private String categoryAdvice;
+    private String urlImageChef;
     private boolean favoriteAdvice;
 
     public Advice() {
     }
 
-    public Advice(int idAdvice, String nameChef, String descriptionAdvice, String categoryAdvice, boolean favoriteAdvice) {
+    public Advice(int idAdvice, String nameChef, String descriptionAdvice, String categoryAdvice, String urlImageChef, boolean favoriteAdvice) {
         this.idAdvice = idAdvice;
         this.nameChef = nameChef;
         this.descriptionAdvice = descriptionAdvice;
         this.categoryAdvice = categoryAdvice;
+        this.urlImageChef = urlImageChef;
         this.favoriteAdvice = favoriteAdvice;
     }
 
@@ -56,5 +58,13 @@ public class Advice {
 
     public void setFavoriteAdvice(boolean favoriteAdvice) {
         this.favoriteAdvice = favoriteAdvice;
+    }
+
+    public String getUrlImageChef() {
+        return urlImageChef;
+    }
+
+    public void setUrlImageChef(String urlImageChef) {
+        this.urlImageChef = urlImageChef;
     }
 }

@@ -31,9 +31,11 @@
     <dimen name="iv_login_height">150dp</dimen>
     <dimen name="iv_step_height">200dp</dimen>
     <dimen name="iv_profile_height">200dp</dimen>
+    <dimen name="iv_feedback_height">100dp</dimen>
 
 
-    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_size">16dp</dimen>
+    <dimen name="icon_info_login_size">32dp</dimen>
     <dimen name="card_album_radius">0dp</dimen>
 
 </resources>

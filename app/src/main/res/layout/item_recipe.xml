@@ -1,83 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipe_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_default">
+    android:layout_margin="@dimen/margin_default"
+    app:cardElevation="4dp">
 
-    <ImageView
-        android:id="@+id/item_recipe_image"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        tools:src="@drawable/spaghete_carbonara" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/item_recipe_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#99FFFFFF"
-        android:gravity="center_horizontal"
-        android:padding="@dimen/padding_default"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/font_size_medium"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/item_recipe_image"
-        tools:text="Spaghete carbonara" />
+        <ImageView
+            android:id="@+id/item_recipe_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/spaghete_carbonara" />
 
-    <!--<ImageView
-        android:id="@+id/item_recipe_time_icon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="@dimen/margin_huge"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/time_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/divider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider" />
+        <TextView
+            android:id="@+id/item_recipe_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#99FFFFFF"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_default"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/font_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/item_recipe_image"
+            tools:text="Spaghete carbonara" />
 
-    <TextView
-        android:id="@+id/item_recipe_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/item_recipe_time_icon"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintStart_toEndOf="@+id/item_recipe_time_icon"
-        app:layout_constraintTop_toTopOf="@+id/item_recipe_time_icon"
-        tools:text="10 minute" />
+        <ImageView
+            android:id="@+id/item_recipe_time_icon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_default"
-        android:background="#ccc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_recipe_image" />
+            android:layout_marginStart="@dimen/margin_huge"
 
-    <ImageView
-        android:id="@+id/item_recipe_points_icon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="@dimen/margin_huge"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/points_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/divider"
-        app:layout_constraintStart_toStartOf="@+id/divider"
-        app:layout_constraintTop_toTopOf="@+id/divider" />
+            android:src="@drawable/time_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider" />
 
-    <TextView
-        android:id="@+id/item_recipe_points"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/item_recipe_points_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/item_recipe_points_icon"
-        app:layout_constraintTop_toTopOf="@+id/item_recipe_points_icon"
-        tools:text="100 puncte" />-->
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/item_recipe_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/item_recipe_time_icon"
+            app:layout_constraintEnd_toStartOf="@+id/divider"
+            app:layout_constraintStart_toEndOf="@+id/item_recipe_time_icon"
+            app:layout_constraintTop_toTopOf="@+id/item_recipe_time_icon"
+            tools:text="10 minute" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_default"
+            android:background="#ccc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_recipe_image" />
+
+        <ImageView
+            android:id="@+id/item_recipe_points_icon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+
+            android:layout_marginStart="@dimen/margin_huge"
+
+            android:src="@drawable/points_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider" />
+
+        <TextView
+            android:id="@+id/item_recipe_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/item_recipe_points_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_recipe_points_icon"
+            app:layout_constraintTop_toTopOf="@+id/item_recipe_points_icon"
+            tools:text="100 puncte" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
