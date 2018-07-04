@@ -20,7 +20,10 @@ import android.widget.Toast;
 import com.easy.cooking.learneat.adapters.RecipeAdapter;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Recipe;
+import com.easy.cooking.learneat.models.User;
+import com.easy.cooking.learneat.utils.Constants;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Recipe> recipes = new ArrayList<>();
     private RecipeAdapter adapter;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     public void initFirebaseController() {
         FirebaseController firebaseController = FirebaseController.getInstance();
         firebaseController.getAllRecipes(getRecipesFromFirebase());
+        firebaseController.getUser(getUserFromFirebase());
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.menu_profile_label:
                         Intent intentProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        intentProfile.putExtra(Constants.EXTRA_PROFILE, user);
                         startActivity(intentProfile);
                         break;
                     case R.id.menu_advice_famous_chefs:
@@ -156,6 +162,29 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 initRvRecipes();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "Data is not available.");
+            }
+        };
+    }
+
+    private ValueEventListener getUserFromFirebase() {
+        return new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    user = data.getValue(User.class);
+                    if (user != null && user.getUid().equals(firebaseUser.getUid())) {
+                        Log.i(TAG, "Selected user: " + user.toString());
+                        return;
+                    } else {
+                        Log.i(TAG, "Selected user is null");
+                    }
+                }
             }
 
             @Override

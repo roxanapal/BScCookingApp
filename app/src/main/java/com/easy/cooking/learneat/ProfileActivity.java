@@ -9,7 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easy.cooking.learneat.models.User;
+import com.easy.cooking.learneat.utils.Constants;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -39,6 +41,22 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         initToolbar();
+
+        Intent intent = getIntent();
+        if (intent == null) {
+            showErrorMessage();
+            return;
+        }
+
+        user = intent.getParcelableExtra(Constants.EXTRA_PROFILE);
+
+        setUserLayout();
+
+    }
+
+    private void setUserLayout() {
+        tvProfileUsername.setText(user.getUsername());
+        Picasso.get().load(user.getUrlProfilePhoto()).into(ivProfilePicture);
     }
 
     public void initToolbar() {
@@ -58,5 +76,9 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             tvProfileUsername.setText(mAuth.getCurrentUser().getEmail());
         }
+    }
+
+    private void showErrorMessage() {
+        Toast.makeText(this, R.string.recipe_data_error, Toast.LENGTH_SHORT).show();
     }
 }

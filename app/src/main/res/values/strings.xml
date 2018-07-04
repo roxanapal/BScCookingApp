@@ -30,6 +30,7 @@
     <string name="item_recipe_minutes_label">&#160;minute</string>
     <string name="item_recipe_points_label">&#160;puncte</string>
     <string name="recipe_data_error">Eroare!</string>
+    <string name="profile_data_error">Eroare profil!</string>
 
     <string name="menu_home">Acasa</string>
     <string name="menu_profile">Profil</string>
@@ -43,6 +44,8 @@
     <string name="btn_next_step_label">Pasul urmator</string>
     <string name="recipe_final_toast">Felicitări, ai terminat rețeta &#160;</string>
     <string name="login_welcome_message">Bine ai venit!</string>
+    <string name="profile_gallery_photo_label">Galerie foto rețete efectuate</string>
+    <string name="profile_advice_list_label">Sfaturi favorite</string>
 
 
 </resources>

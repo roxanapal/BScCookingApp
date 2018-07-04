@@ -1,12 +1,11 @@
 package com.easy.cooking.learneat;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -65,8 +64,10 @@ public class SignUpActivity extends AppCompatActivity {
     public void initFirebaseController() {
         FirebaseController firebaseController = FirebaseController.getInstance();
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
-        User user = new User(firebaseUser.getUid(), username, password, email);
-        firebaseController.addUserToRealtimeDatabase(user);
+        String profilePhoto = "https://firebasestorage.googleapis.com/v0/b/learn-eat-app.appspot.com/o/profilephotos%2Fuserprofile.png?alt=media&token=365abd75-b368-4653-9f54-c96942145dbf";
+
+        User userAuth = new User(firebaseUser.getUid(), username, password, email,0,null, profilePhoto, null);
+        firebaseController.addUserToRealtimeDatabase(userAuth);
     }
 
     /**

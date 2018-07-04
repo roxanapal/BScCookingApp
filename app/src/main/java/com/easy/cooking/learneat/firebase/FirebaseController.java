@@ -76,4 +76,11 @@ public class FirebaseController {
         });
     }
 
+    public void getUser(ValueEventListener eventListener) {
+        if(eventListener != null) {
+            databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
+        }
+        databaseReference.addValueEventListener(eventListener);
+    }
+
 }
