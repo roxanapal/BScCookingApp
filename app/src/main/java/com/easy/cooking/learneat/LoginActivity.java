@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.easy.cooking.learneat.data.UserProfile;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.User;
 import com.easy.cooking.learneat.utils.Constants;
@@ -142,10 +143,10 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             //clear all the open activities from the stack, the user cant go back to the login activity
-                            finish();
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             Toast.makeText(getApplicationContext(), R.string.login_welcome_message, Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

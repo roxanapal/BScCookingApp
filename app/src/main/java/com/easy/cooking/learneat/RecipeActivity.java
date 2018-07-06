@@ -69,10 +69,6 @@ public class RecipeActivity extends AppCompatActivity {
         }
 
         final Recipe recipe = intent.getParcelableExtra(Constants.EXTRA_RECIPE);
-        if (recipe.getIdRecipe() == Constants.DEFAULT_ID) {
-            showErrorMessage();
-            return;
-        }
 
         setRecipeInfo(recipe);
         initRecyclerViewIngredients(recipe.getIngredientList());

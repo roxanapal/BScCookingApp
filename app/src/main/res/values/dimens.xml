@@ -37,5 +37,6 @@
     <dimen name="icon_size">16dp</dimen>
     <dimen name="icon_info_login_size">32dp</dimen>
     <dimen name="card_album_radius">0dp</dimen>
+    <dimen name="iv_help_screenshot">300dp</dimen>
 
 </resources>

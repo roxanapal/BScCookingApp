@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.easy.cooking.learneat.adapters.RecipeAdapter;
+import com.easy.cooking.learneat.data.UserProfile;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Recipe;
 import com.easy.cooking.learneat.models.User;
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     user = data.getValue(User.class);
                     if (user != null && user.getUid().equals(firebaseUser.getUid())) {
+                        UserProfile.getInstance().setUserProfile(user);
                         Log.i(TAG, "Selected user: " + user.toString());
                         return;
                     } else {

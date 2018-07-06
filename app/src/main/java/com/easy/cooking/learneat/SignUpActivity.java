@@ -61,13 +61,14 @@ public class SignUpActivity extends AppCompatActivity {
         setToolbar(toolbar);
     }
 
-    public void initFirebaseController() {
+    public void addUserToDatabase() {
         FirebaseController firebaseController = FirebaseController.getInstance();
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         String profilePhoto = "https://firebasestorage.googleapis.com/v0/b/learn-eat-app.appspot.com/o/profilephotos%2Fuserprofile.png?alt=media&token=365abd75-b368-4653-9f54-c96942145dbf";
 
         User userAuth = new User(firebaseUser.getUid(), username, password, email,0,null, profilePhoto, null);
         firebaseController.addUserToRealtimeDatabase(userAuth);
+
     }
 
     /**
@@ -123,7 +124,6 @@ public class SignUpActivity extends AppCompatActivity {
     public void onClickToSignUp(View view) {
         if (validate()) {
             registerUser();
-            initFirebaseController();
         }
     }
 
@@ -136,11 +136,14 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
+                            addUserToDatabase();
+
                             Toast.makeText(getApplicationContext(), R.string.sign_up_user_created_toast, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                            //clear all the open activities from the stack, the user cant go back to the login activity
+                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                            //clear all the open activities from the stack, the user cant go back to sign up activity
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
+                            finish();
                         } else {
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                 Toast.makeText(getApplicationContext(), R.string.sign_up_user_already_registered, Toast.LENGTH_SHORT).show();

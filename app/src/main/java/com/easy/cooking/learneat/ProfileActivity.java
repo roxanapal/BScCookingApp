@@ -66,18 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(mAuth.getCurrentUser() == null){
-            finish();
-            Toast.makeText(this, "Trebuie să vă logați.", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this,LoginActivity.class));
-        } else {
-            tvProfileUsername.setText(mAuth.getCurrentUser().getEmail());
-        }
-    }
-
     private void showErrorMessage() {
         Toast.makeText(this, R.string.recipe_data_error, Toast.LENGTH_SHORT).show();
     }

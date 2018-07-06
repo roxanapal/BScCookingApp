@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_step_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/font_size_headline"
-        android:padding="@dimen/padding_large"
-        tools:text="Titlu" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_step_points"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/font_size_subhead"
-        tools:text="40 puncte" />
+        <TextView
+            android:id="@+id/tv_step_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_large"
+            android:textSize="@dimen/font_size_headline"
+            tools:text="Titlu" />
 
-    <TextView
-        android:id="@+id/tv_step_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_large"
-        android:textSize="@dimen/font_size_large"
-        tools:text="Description" />
+        <TextView
+            android:id="@+id/tv_step_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/font_size_subhead"
+            tools:text="40 puncte" />
 
-    <ImageView
-        android:id="@+id/iv_step_image"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_step_height"
-        android:layout_margin="@dimen/margin_large"
-        tools:src="@drawable/spaghete_carbonara" />
+        <TextView
+            android:id="@+id/tv_step_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_large"
+            android:textSize="@dimen/font_size_large"
+            tools:text="Description" />
 
-    <Button
-        android:id="@+id/btn_next_step"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:padding="@dimen/padding_default"
-        android:text="@string/btn_next_step_label"
-        android:textColor="#ffffff" />
+        <ImageView
+            android:id="@+id/iv_step_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_step_height"
+            android:layout_margin="@dimen/margin_large"
+            tools:src="@drawable/spaghete_carbonara" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_next_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/margin_huge"
+            android:padding="@dimen/padding_default"
+            android:text="@string/btn_next_step_label"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+</ScrollView>
