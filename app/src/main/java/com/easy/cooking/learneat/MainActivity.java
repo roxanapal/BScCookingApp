@@ -14,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easy.cooking.learneat.adapters.RecipeAdapter;
@@ -28,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         initToolbar();
-        setNavigationView();
         initFirebaseController();
+        setNavigationView();
     }
 
     public void initToolbar() {
@@ -83,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void setNavigationView() {
         setupDrawerContent(mainNavigationView);
+        View headerView = mainNavigationView.inflateHeaderView(R.layout.header_drawer_layout);
+
+        ImageView ivProfile = headerView.findViewById(R.id.menu_avatar);
+        Picasso.get().load(user.getUrlProfilePhoto())
+                .into(ivProfile);
+
+        TextView tvUsername = headerView.findViewById(R.id.menu_name);
+        tvUsername.setText(user.getUsername());
+
+        TextView tvNumberPoints = headerView.findViewById(R.id.menu_number_points);
+        tvNumberPoints.setText(user.getNumberPoints());
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, 0, 0);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -180,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     user = data.getValue(User.class);
                     if (user != null && user.getUid().equals(firebaseUser.getUid())) {
-                        UserProfile.getInstance().setUserProfile(user);
                         Log.i(TAG, "Selected user: " + user.toString());
                         return;
                     } else {
