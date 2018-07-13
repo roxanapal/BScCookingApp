@@ -5,11 +5,14 @@ import android.util.Log;
 
 import com.easy.cooking.learneat.models.User;
 import com.easy.cooking.learneat.utils.Constants;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class FirebaseController {
 
@@ -54,12 +57,12 @@ public class FirebaseController {
         }
         databaseReference.child(user.getUid()).setValue(user);
 
-        addChangeEventListenerForEachPlayer(user);
+        addChangeEventListenerForEachUser(user);
 
         return responseInsert;
     }
 
-    private void addChangeEventListenerForEachPlayer(User user) {
+    private void addChangeEventListenerForEachUser(User user) {
         databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -76,11 +79,13 @@ public class FirebaseController {
         });
     }
 
-    public void getUser(ValueEventListener eventListener) {
-        if(eventListener != null) {
-            databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
-        }
-        databaseReference.addValueEventListener(eventListener);
+    public void getUser(ValueEventListener eventListener, FirebaseUser firebaseUser) {
+        databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
+        databaseReference.child(firebaseUser.getUid()).addValueEventListener(eventListener);
     }
 
+    public void updateProfilePhoto(FirebaseUser firebaseUser, String photoUrl){
+        databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
+        databaseReference.child(firebaseUser.getUid()).child("urlProfilePhoto").setValue(photoUrl);
+    }
 }

@@ -140,4 +140,9 @@ public class User implements Parcelable {
         dest.writeString(urlProfilePhoto);
         dest.writeStringList(completedRecipesGallery);
     }
+
+    @Override
+    public String toString() {
+        return "User{}";
+    }
 }

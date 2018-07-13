@@ -13,4 +13,5 @@ public interface Constants {
     String ARGUMENT_STEP = "ARGUMENT_STEP";
     String BACKSTACK_NAME = "BACKSTACK_NAME";
     int DEFAULT_ID = -1;
+    int KEY_SELECT_IMAGE = 100;
 }

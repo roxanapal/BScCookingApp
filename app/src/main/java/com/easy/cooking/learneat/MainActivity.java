@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easy.cooking.learneat.adapters.RecipeAdapter;
-import com.easy.cooking.learneat.data.UserProfile;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Recipe;
 import com.easy.cooking.learneat.models.User;
@@ -64,6 +63,23 @@ public class MainActivity extends AppCompatActivity {
     private List<Recipe> recipes = new ArrayList<>();
     private RecipeAdapter adapter;
     private User user;
+    private FirebaseUser firebaseUser;
+
+    private View headerView;
+
+    private ValueEventListener userEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            user = dataSnapshot.getValue(User.class);
+            setUser(user, headerView);
+            Log.i(TAG, "User: " + user);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            Log.w(TAG, "Data is not available.");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +88,11 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
 
         initToolbar();
-        initFirebaseController();
         setNavigationView();
+        initFirebaseController();
     }
 
     public void initToolbar() {
@@ -84,29 +101,32 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-    public void setNavigationView() {
-        setupDrawerContent(mainNavigationView);
-        View headerView = mainNavigationView.inflateHeaderView(R.layout.header_drawer_layout);
-
+    private void setUser(User userProfile, View headerView) {
         ImageView ivProfile = headerView.findViewById(R.id.menu_avatar);
-        Picasso.get().load(user.getUrlProfilePhoto())
+        Picasso.get().load(userProfile.getUrlProfilePhoto())
                 .into(ivProfile);
 
         TextView tvUsername = headerView.findViewById(R.id.menu_name);
-        tvUsername.setText(user.getUsername());
+        tvUsername.setText(userProfile.getUsername());
 
         TextView tvNumberPoints = headerView.findViewById(R.id.menu_number_points);
-        tvNumberPoints.setText(user.getNumberPoints());
+        tvNumberPoints.setText(String.valueOf(userProfile.getNumberPoints()));
+    }
+
+    public void setNavigationView() {
+        setupDrawerContent(mainNavigationView);
+        headerView = mainNavigationView.inflateHeaderView(R.layout.header_drawer_layout);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, 0, 0);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         mainDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
     public void initFirebaseController() {
         FirebaseController firebaseController = FirebaseController.getInstance();
         firebaseController.getAllRecipes(getRecipesFromFirebase());
-        firebaseController.getUser(getUserFromFirebase());
+        firebaseController.getUser(userEventListener, firebaseUser);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -130,11 +150,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentFeedback);
                         break;
                     case R.id.menu_help:
-                        Toast.makeText(MainActivity.this, "Ajutor", Toast.LENGTH_SHORT).show();
                         Intent intentHelp = new Intent(getApplicationContext(), HelpActivity.class);
                         startActivity(intentHelp);
                         break;
                     case R.id.menu_log_out:
+                        mAuth.signOut();
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Te-ai delogat cu succes", Toast.LENGTH_SHORT).show();
@@ -155,12 +175,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        actionBarDrawerToggle.syncState();
-    }
-
     private ValueEventListener getRecipesFromFirebase() {
         mainProgressBar.setVisibility(View.VISIBLE);
         return new ValueEventListener() {
@@ -177,29 +191,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 initRvRecipes();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "Data is not available.");
-            }
-        };
-    }
-
-    private ValueEventListener getUserFromFirebase() {
-        return new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    user = data.getValue(User.class);
-                    if (user != null && user.getUid().equals(firebaseUser.getUid())) {
-                        Log.i(TAG, "Selected user: " + user.toString());
-                        return;
-                    } else {
-                        Log.i(TAG, "Selected user is null");
-                    }
-                }
             }
 
             @Override
