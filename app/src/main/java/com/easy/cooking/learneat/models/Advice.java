@@ -1,6 +1,11 @@
 package com.easy.cooking.learneat.models;
 
-public class Advice {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Advice implements Parcelable, Serializable {
     private int idAdvice;
     private String nameChef;
     private String descriptionAdvice;
@@ -19,6 +24,27 @@ public class Advice {
         this.urlImageChef = urlImageChef;
         this.favoriteAdvice = favoriteAdvice;
     }
+
+    protected Advice(Parcel in) {
+        idAdvice = in.readInt();
+        nameChef = in.readString();
+        descriptionAdvice = in.readString();
+        categoryAdvice = in.readString();
+        urlImageChef = in.readString();
+        favoriteAdvice = in.readByte() != 0;
+    }
+
+    public static final Creator<Advice> CREATOR = new Creator<Advice>() {
+        @Override
+        public Advice createFromParcel(Parcel in) {
+            return new Advice(in);
+        }
+
+        @Override
+        public Advice[] newArray(int size) {
+            return new Advice[size];
+        }
+    };
 
     public int getIdAdvice() {
         return idAdvice;
@@ -66,5 +92,20 @@ public class Advice {
 
     public void setUrlImageChef(String urlImageChef) {
         this.urlImageChef = urlImageChef;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(idAdvice);
+        dest.writeString(nameChef);
+        dest.writeString(descriptionAdvice);
+        dest.writeString(categoryAdvice);
+        dest.writeString(urlImageChef);
+        dest.writeByte((byte) (favoriteAdvice ? 1 : 0));
     }
 }

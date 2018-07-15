@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar mainProgressBar;
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private Intent intentProfile;
 
     private FirebaseAuth mAuth;
 
@@ -105,6 +106,16 @@ public class MainActivity extends AppCompatActivity {
         ImageView ivProfile = headerView.findViewById(R.id.menu_avatar);
         Picasso.get().load(userProfile.getUrlProfilePhoto())
                 .into(ivProfile);
+        ivProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constants.EXTRA_PROFILE, user);
+                intentProfile.putExtra(Constants.EXTRA_BUNDLE, bundle);
+                startActivity(intentProfile);
+            }
+        });
 
         TextView tvUsername = headerView.findViewById(R.id.menu_name);
         tvUsername.setText(userProfile.getUsername());
@@ -136,8 +147,10 @@ public class MainActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
                     case R.id.menu_profile_label:
-                        Intent intentProfile = new Intent(getApplicationContext(), ProfileActivity.class);
-                        intentProfile.putExtra(Constants.EXTRA_PROFILE, user);
+                        intentProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable(Constants.EXTRA_PROFILE, user);
+                        intentProfile.putExtra(Constants.EXTRA_BUNDLE, bundle);
                         startActivity(intentProfile);
                         break;
                     case R.id.menu_advice_famous_chefs:

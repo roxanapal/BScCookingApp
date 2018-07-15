@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.easy.cooking.learneat">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +18,17 @@
         android:roundIcon="@mipmap/ic_launcher_food_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +39,7 @@
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".MainActivity"
-             />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".RecipeActivity"
             android:parentActivityName=".MainActivity" />
@@ -44,6 +58,7 @@
         <activity
             android:name=".FeedbackActivity"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".UploadPhototActivity" />
     </application>
 
 </manifest>

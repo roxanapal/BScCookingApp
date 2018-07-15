@@ -1,18 +1,26 @@
 <resources>
     <string name="app_name">LearnEAT</string>
 
+    <!-- Titles -->
+    <string name="sign_up_title_toolbar">Înregistrare</string>
+    <string name="upload_photo_title_toolbar">Încarcă fotografia rețetei</string>
+    <string name="menu_home">Acasa</string>
+    <string name="menu_profile">Profil</string>
+    <string name="menu_advice_chefs">Sfaturi bucatari celebri</string>
+    <string name="menu_help">Despre</string>
+    <string name="menu_logout">Deconectare</string>
+    <string name="menu_feedback">Oferă Feedback</string>
+
+    <!-- Login Strings -->
+    <string name="login_btn_label">Logează-te</string>
+    <string name="login_tv_register">Inregistreaza-te</string>
+    <string name="login_welcome_message">Bine ai venit!</string>
+
+    <!-- Sign Up Strings -->
     <string name="username_hint">Nume utilizator</string>
     <string name="password_hint">Parolă</string>
     <string name="email_hint">Email</string>
-
-    <string name="login_tv_title">LearnEAT</string>
-    <string name="login_btn_label">Logează-te</string>
-    <string name="login_tv_register">Inregistreaza-te</string>
-
-    <string name="some_error">Some error</string>
-
-    <string name="sign_up_title_toolbar">Înregistrare</string>
-    <string name="sign_up_title">Completeaza datele de mai jos si creeaza un cont!</string>
+    <string name="sign_up_subtitle">Completeaza datele de mai jos si creeaza un cont!</string>
     <string name="sign_up_username_error">Completează numele de utilizator.</string>
     <string name="sign_up_password_error">Completează parola.</string>
     <string name="sign_up_email_error">Completeaza email-ul.</string>
@@ -20,37 +28,36 @@
     <string name="sign_up_email_error_validation">Email-ul nu este valid</string>
     <string name="sign_up_password_error_validation">Parola trebuie sa aiba cel putin 5 caractere</string>
     <string name="sign_up_user_already_registered">Acest user exista deja!</string>
+
     <string name="menu_test_name">roxana.pal</string>
     <string name="menu_tv_points_label">puncte</string>
     <string name="menu_tv_status_label">Status:</string>
-    <string name="menu_sfaturi_bucatari_celebri">Sfaturi bucatari celebri</string>
     <string name="menu_help_btn">Help</string>
     <string name="main_title">Esti pregatit sa pasesti in universul bucatariei cu ajutorul aplicatiei LearnEAT?</string>
 
-    <string name="item_recipe_minutes_label">&#160;minute</string>
-    <string name="item_recipe_points_label">&#160;puncte</string>
-    <string name="recipe_data_error">Eroare!</string>
-    <string name="profile_data_error">Eroare profil!</string>
-
-    <string name="menu_home">Acasa</string>
-    <string name="menu_profile">Profil</string>
-    <string name="menu_advice_chefs">Sfaturi bucatari celebri</string>
-    <string name="menu_help">Despre</string>
-    <string name="menu_logout">Deconectare</string>
+    <!-- Recipe Strings -->
     <string name="recipe_ingredients_label">Ingrediente</string>
     <string name="recipe_btn_start_label">Incepe reteta</string>
-    <string name="menu_feedback">Oferă Feedback</string>
+    <string name="item_recipe_minutes_label">&#160;minute</string>
+    <string name="item_recipe_points_label">&#160;puncte</string>
+    <string name="recipe_final_toast">Felicitări, ai terminat rețeta&#160;</string>
 
-    <string name="btn_next_step_label">Pasul urmator</string>
-    <string name="recipe_final_toast">Felicitări, ai terminat rețeta &#160;</string>
-    <string name="login_welcome_message">Bine ai venit!</string>
+    <!-- Error messages -->
+    <string name="recipe_data_error">Eroare incarcare reteta!</string>
+    <string name="profile_data_error">Eroare profil!</string>
+    <string name="some_error">Some error</string>
+
+    <string name="step_btn_next_step_label">Pasul urmator</string>
+
     <string name="profile_gallery_photo_label">Galerie foto rețete efectuate</string>
-    <string name="profile_advice_list_label">Sfaturi favorite</string>
-    <string name="help_first_paragraph">Aplicația "LearnEAT" este adresată oamenilor care aleg să gătească acasă, în propria lor bucătărie. Aceasta va oferi asistență pe parcursul rețetei, astfel încât utilizatorul să fie motivat să o finalizeze conform pașilor oferiți de aceasta. Pentru a face lucrurile mai atractive, aplicația va fi prezentată sub formă de competiție, iar utilizatorul poate câștiga puncte pentru fiecare rețetă efectuată.</string>
-
     <string name="profile_gallery_null_message">Nu există rețete efectuate.</string>
+    <string name="profile_advice_list_label">Sfaturi favorite</string>
     <string name="profile_advice_null_message">Nu există sfaturi favorite.</string>
     <string name="profile_gallery_picker_title">Selecteaza imagine</string>
 
+    <string name="help_first_paragraph">Aplicația "LearnEAT" este adresată oamenilor care aleg să gătească acasă, în propria lor bucătărie. Aceasta va oferi asistență pe parcursul rețetei, astfel încât utilizatorul să fie motivat să o finalizeze conform pașilor oferiți de aceasta. Pentru a face lucrurile mai atractive, aplicația va fi prezentată sub formă de competiție, iar utilizatorul poate câștiga puncte pentru fiecare rețetă efectuată.</string>
+    <string name="upload_photo_subtitle">Încarcă fotografia cu rețeta efectuată de tine.</string>
+    <string name="upload_photo_button_label">Fotografiază preparatul</string>
+    <string name="bitmap_utils_error">Eroare, nu se gaseste imaginea dorita.</string>
 
 </resources>

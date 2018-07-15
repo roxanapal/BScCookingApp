@@ -14,4 +14,5 @@ public interface Constants {
     String BACKSTACK_NAME = "BACKSTACK_NAME";
     int DEFAULT_ID = -1;
     int KEY_SELECT_IMAGE = 100;
+    String EXTRA_BUNDLE = "EXTRA_BUNDLE";
 }

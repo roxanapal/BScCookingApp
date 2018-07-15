@@ -3,21 +3,24 @@ package com.easy.cooking.learneat.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by roxan on 3/13/2018.
  */
 
-public class User implements Parcelable {
+public class User implements Parcelable, Serializable{
     private String uid;
     private String username;
     private String password;
     private String email;
     private int numberPoints;
-    private List<Advice> favoriteAdviceList;
+    private HashMap<String, Advice> favoriteAdviceList;
     private String urlProfilePhoto;
-    private List<String> completedRecipesGallery;
+    private HashMap<String, CompletedRecipe> completedRecipesGallery;
 
     public User() {
     }
@@ -28,7 +31,14 @@ public class User implements Parcelable {
         this.email = email;
     }
 
-    public User(String uid, String username, String password, String email, int numberPoints, List<Advice> favoriteAdviceList, String urlProfilePhoto, List<String> completedRecipesGallery) {
+    public User(String uid,
+                String username,
+                String password,
+                String email,
+                int numberPoints,
+                HashMap<String, Advice> favoriteAdviceList,
+                String urlProfilePhoto,
+                HashMap<String, CompletedRecipe> completedRecipesGallery) {
         this.uid = uid;
         this.username = username;
         this.password = password;
@@ -38,28 +48,6 @@ public class User implements Parcelable {
         this.urlProfilePhoto = urlProfilePhoto;
         this.completedRecipesGallery = completedRecipesGallery;
     }
-
-    protected User(Parcel in) {
-        uid = in.readString();
-        username = in.readString();
-        password = in.readString();
-        email = in.readString();
-        numberPoints = in.readInt();
-        urlProfilePhoto = in.readString();
-        completedRecipesGallery = in.createStringArrayList();
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     public String getUid() {
         return uid;
@@ -101,28 +89,33 @@ public class User implements Parcelable {
         this.numberPoints = numberPoints;
     }
 
-    public List<Advice> getFavoriteAdviceList() {
-        return favoriteAdviceList;
-    }
-
-    public void setFavoriteAdviceList(List<Advice> favoriteAdviceList) {
-        this.favoriteAdviceList = favoriteAdviceList;
-    }
-
-    public List<String> getCompletedRecipesGallery() {
-        return completedRecipesGallery;
-    }
-
-    public void setCompletedRecipesGallery(List<String> completedRecipesGallery) {
-        this.completedRecipesGallery = completedRecipesGallery;
-    }
-
     public String getUrlProfilePhoto() {
         return urlProfilePhoto;
     }
 
     public void setUrlProfilePhoto(String urlProfilePhoto) {
         this.urlProfilePhoto = urlProfilePhoto;
+    }
+
+    public HashMap<String, Advice> getFavoriteAdviceList() {
+        return favoriteAdviceList;
+    }
+
+    public void setFavoriteAdviceList(HashMap<String, Advice> favoriteAdviceList) {
+        this.favoriteAdviceList = favoriteAdviceList;
+    }
+
+    public HashMap<String, CompletedRecipe> getCompletedRecipesGallery() {
+        return completedRecipesGallery;
+    }
+
+    public void setCompletedRecipesGallery(HashMap<String, CompletedRecipe> completedRecipesGallery) {
+        this.completedRecipesGallery = completedRecipesGallery;
+    }
+
+    @Override
+    public String toString() {
+        return "User{}";
     }
 
     @Override
@@ -132,17 +125,36 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(uid);
-        dest.writeString(username);
-        dest.writeString(password);
-        dest.writeString(email);
-        dest.writeInt(numberPoints);
-        dest.writeString(urlProfilePhoto);
-        dest.writeStringList(completedRecipesGallery);
+        dest.writeString(this.uid);
+        dest.writeString(this.username);
+        dest.writeString(this.password);
+        dest.writeString(this.email);
+        dest.writeInt(this.numberPoints);
+        dest.writeSerializable(this.favoriteAdviceList);
+        dest.writeString(this.urlProfilePhoto);
+        dest.writeSerializable(this.completedRecipesGallery);
     }
 
-    @Override
-    public String toString() {
-        return "User{}";
+    protected User(Parcel in) {
+        this.uid = in.readString();
+        this.username = in.readString();
+        this.password = in.readString();
+        this.email = in.readString();
+        this.numberPoints = in.readInt();
+        this.favoriteAdviceList = (HashMap<String, Advice>) in.readSerializable();
+        this.urlProfilePhoto = in.readString();
+        this.completedRecipesGallery = (HashMap<String, CompletedRecipe>) in.readSerializable();
     }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

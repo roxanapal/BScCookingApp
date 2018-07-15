@@ -1,7 +1,6 @@
 package com.easy.cooking.learneat;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -9,27 +8,31 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.easy.cooking.learneat.adapters.CompletedRecipeAdapter;
 import com.easy.cooking.learneat.firebase.FirebaseController;
+import com.easy.cooking.learneat.models.CompletedRecipe;
 import com.easy.cooking.learneat.models.User;
 import com.easy.cooking.learneat.utils.Constants;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,11 +53,14 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.tv_profile_points)
     TextView tvProfilePoints;
 
-    @BindView(R.id.tv_profile_gallery_null)
+    @BindView(R.id.tv_profile_completed_recipes_null)
     TextView tvProfileGalleryNull;
 
     @BindView(R.id.tv_profile_advice_null)
     TextView tvProfileAdviceNull;
+
+    @BindView(R.id.rv_profile_completed_recipes)
+    RecyclerView rvCompletedRecipes;
 
     private FirebaseAuth mAuth;
     private User user;
@@ -77,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        user = intent.getParcelableExtra(Constants.EXTRA_PROFILE);
+        user = (User) intent.getBundleExtra(Constants.EXTRA_BUNDLE).getSerializable(Constants.EXTRA_PROFILE);
 
         setUserLayout();
 
@@ -95,8 +101,17 @@ public class ProfileActivity extends AppCompatActivity {
         Picasso.get().load(user.getUrlProfilePhoto()).into(ivProfilePicture);
         tvProfilePoints.setText(String.valueOf(user.getNumberPoints()));
 
+        List<CompletedRecipe> completedRecipeList = new ArrayList<>();
         if (user.getCompletedRecipesGallery() == null) {
             tvProfileGalleryNull.setVisibility(View.VISIBLE);
+        } else {
+            for (CompletedRecipe completedRecipe : user.getCompletedRecipesGallery().values()) {
+                completedRecipeList.add(completedRecipe);
+            }
+            CompletedRecipeAdapter adapter = new CompletedRecipeAdapter(completedRecipeList, this);
+            rvCompletedRecipes.setLayoutManager(new LinearLayoutManager(this));
+            rvCompletedRecipes.setAdapter(adapter);
+
         }
 
         if (user.getFavoriteAdviceList() == null) {
@@ -112,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void showErrorMessage() {
-        Toast.makeText(this, R.string.recipe_data_error, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.profile_data_error, Toast.LENGTH_SHORT).show();
     }
 
     private void openImagePicker() {

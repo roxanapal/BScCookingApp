@@ -78,6 +78,10 @@ public class StepActivity extends AppCompatActivity implements StepFragment.OnFr
 
             switchFragment(nextStep);
         } else {
+            Intent uploadPhototIntent = new Intent(StepActivity.this, UploadPhototActivity.class);
+            uploadPhototIntent.putExtra(Constants.EXTRA_RECIPE, recipe);
+            startActivity(uploadPhototIntent);
+            finish();
             Toast.makeText(this, getString(R.string.recipe_final_toast) + recipe.getTitleRecipe() + "!", Toast.LENGTH_SHORT).show();
         }
     }

@@ -3,6 +3,7 @@ package com.easy.cooking.learneat.firebase;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.easy.cooking.learneat.models.CompletedRecipe;
 import com.easy.cooking.learneat.models.User;
 import com.easy.cooking.learneat.utils.Constants;
 import com.google.firebase.auth.FirebaseUser;
@@ -87,5 +88,10 @@ public class FirebaseController {
     public void updateProfilePhoto(FirebaseUser firebaseUser, String photoUrl){
         databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
         databaseReference.child(firebaseUser.getUid()).child("urlProfilePhoto").setValue(photoUrl);
+    }
+
+    public void addCompletedRecipe(FirebaseUser firebaseUser, CompletedRecipe completedRecipe){
+        databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
+        databaseReference.child(firebaseUser.getUid()).child("completedRecipesGallery").push().setValue(completedRecipe);
     }
 }
