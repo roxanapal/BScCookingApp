@@ -31,9 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:layout_margin="@dimen/margin_large"
-            android:text="@string/upload_photo_subtitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:textSize="@dimen/font_size_large"
+            android:text="@string/upload_photo_subtitle" />
 
         <Button
             android:id="@+id/btn_upload_photo"
@@ -42,8 +43,12 @@
             android:layout_below="@id/tv_upload_photo_subtitle"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/upload_photo_button_label"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:padding="@dimen/padding_large"
+            android:layout_margin="@dimen/margin_default"
+            android:background="@drawable/mybutton"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_medium"
+            android:text="@string/upload_photo_button_label" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_clear"
@@ -58,8 +63,8 @@
             app:backgroundTint="@android:color/white"
             app:fabSize="mini" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_save"
+        <Button
+            android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -67,7 +72,24 @@
             android:layout_marginBottom="@dimen/margin_huge"
             android:src="@drawable/ic_save"
             android:visibility="gone"
-            app:backgroundTint="@android:color/white" />
+            android:padding="@dimen/padding_large"
+            android:background="@drawable/mybutton"
+            android:textColor="@android:color/white"
+            android:text="@string/upload_photo_btn_save_photo" />
+
+        <View
+            android:id="@+id/upload_photo_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="#99FFFFFF" />
+
+        <ProgressBar
+            android:id="@+id/upload_photo_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

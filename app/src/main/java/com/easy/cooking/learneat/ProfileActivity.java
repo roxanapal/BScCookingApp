@@ -56,9 +56,6 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.tv_profile_completed_recipes_null)
     TextView tvProfileGalleryNull;
 
-    @BindView(R.id.tv_profile_advice_null)
-    TextView tvProfileAdviceNull;
-
     @BindView(R.id.rv_profile_completed_recipes)
     RecyclerView rvCompletedRecipes;
 
@@ -109,14 +106,12 @@ public class ProfileActivity extends AppCompatActivity {
                 completedRecipeList.add(completedRecipe);
             }
             CompletedRecipeAdapter adapter = new CompletedRecipeAdapter(completedRecipeList, this);
+            rvCompletedRecipes.setNestedScrollingEnabled(false);
             rvCompletedRecipes.setLayoutManager(new LinearLayoutManager(this));
             rvCompletedRecipes.setAdapter(adapter);
 
         }
 
-        if (user.getFavoriteAdviceList() == null) {
-            tvProfileAdviceNull.setVisibility(View.VISIBLE);
-        }
     }
 
     private void initToolbar() {

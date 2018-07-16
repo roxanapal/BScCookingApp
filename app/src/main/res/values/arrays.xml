@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_type_values">
+        <item>Alege categoria</item>
+        <item>orez</item>
+        <item>bucatarie</item>
+        <item>legume</item>
+        <item>prajituri</item>
+    </string-array>
+</resources>

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/padding_default">
+    android:padding="@dimen/padding_default"
+    tools:ignore="ExtraText">
 
     <ImageView
         android:id="@+id/iv_item_completed_recipe"
@@ -11,6 +12,7 @@
         android:layout_height="@dimen/iv_item_completed_recipe_height"
         android:layout_marginTop="@dimen/margin_default"
         android:layout_marginBottom="@dimen/margin_default"
+        android:scaleType="centerCrop"
         tools:src="@drawable/spaghete_carbonara" />
 
     <TextView
@@ -54,7 +56,5 @@
         android:layout_marginStart="@dimen/margin_default"
         android:background="@android:color/darker_gray"
         android:layout_below="@id/iv_item_completed_recipe"/>
-
-    />
 
 </RelativeLayout>

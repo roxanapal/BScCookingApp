@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,8 +69,14 @@ public class UploadPhototActivity extends AppCompatActivity {
     @BindView(R.id.fab_clear)
     FloatingActionButton fabClear;
 
-    @BindView(R.id.fab_save)
-    FloatingActionButton fabSave;
+    @BindView(R.id.btn_save)
+    Button btnSave;
+
+    @BindView(R.id.upload_photo_progressbar)
+    ProgressBar pbUpload;
+
+    @BindView(R.id.upload_photo_view)
+    View uploadView;
 
     private String temporaryPhotoPath;
     private Intent intent;
@@ -81,7 +88,7 @@ public class UploadPhototActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_photot);
+        setContentView(R.layout.activity_upload_photo);
         ButterKnife.bind(this);
 
         intent = getIntent();
@@ -151,7 +158,7 @@ public class UploadPhototActivity extends AppCompatActivity {
         btnUploadPhoto.setVisibility(View.GONE);
         tvUploadPhotoSubtitle.setVisibility(View.GONE);
         fabClear.setVisibility(View.VISIBLE);
-        fabSave.setVisibility(View.VISIBLE);
+        btnSave.setVisibility(View.VISIBLE);
 
         resultBitmap = BitmapUtils.resamplePicture(this, temporaryPhotoPath);
         ivUploadPhoto.setImageBitmap(resultBitmap);
@@ -162,14 +169,16 @@ public class UploadPhototActivity extends AppCompatActivity {
         ivUploadPhoto.setImageResource(0);
         btnUploadPhoto.setVisibility(View.VISIBLE);
         tvUploadPhotoSubtitle.setVisibility(View.VISIBLE);
-        fabSave.setVisibility(View.GONE);
+        btnSave.setVisibility(View.GONE);
         fabClear.setVisibility(View.GONE);
 
         BitmapUtils.deleteTemporaryFile(this, temporaryPhotoPath);
     }
 
-    @OnClick(R.id.fab_save)
+    @OnClick(R.id.btn_save)
     public void saveImage(View view) {
+        pbUpload.setVisibility(View.VISIBLE);
+        uploadView.setVisibility(View.VISIBLE);
         recipe = intent.getParcelableExtra(Constants.EXTRA_RECIPE);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         final FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -208,8 +217,10 @@ public class UploadPhototActivity extends AppCompatActivity {
                                         ddmmyyyy + " " + hhmmss,
                                         recipe.getPointsRecipe());
 
+                                pbUpload.setVisibility(View.GONE);
+                                uploadView.setVisibility(View.GONE);
                                 FirebaseController.getInstance().addCompletedRecipe(auth.getCurrentUser(), completedRecipe);
-                                Toast.makeText(UploadPhototActivity.this, "Succes pe getURI:" + uri, Toast.LENGTH_LONG).show();
+                                finish();
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {

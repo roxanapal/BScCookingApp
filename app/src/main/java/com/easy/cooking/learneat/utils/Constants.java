@@ -9,10 +9,10 @@ public interface Constants {
 
     String TABLE_NAME_USER = "USER";
     String TABLE_NAME_RECIPE = "RECIPE";
+    String TABLE_NAME_ADVICE = "ADVICE";
 
     String ARGUMENT_STEP = "ARGUMENT_STEP";
-    String BACKSTACK_NAME = "BACKSTACK_NAME";
-    int DEFAULT_ID = -1;
+
     int KEY_SELECT_IMAGE = 100;
     String EXTRA_BUNDLE = "EXTRA_BUNDLE";
 }

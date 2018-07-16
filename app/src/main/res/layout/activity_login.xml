@@ -89,6 +89,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:text="@string/login_tv_register"/>
 
+
         <ProgressBar
             android:id="@+id/login_progressbar"
             android:layout_width="wrap_content"

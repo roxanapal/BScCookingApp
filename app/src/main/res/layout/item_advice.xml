@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_default"
@@ -19,11 +20,20 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:padding="@dimen/padding_default"
-            android:text="Chef Dale Talde"
             android:textSize="@dimen/font_size_medium"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toTopOf="@+id/advice_tv_description"
             app:layout_constraintEnd_toStartOf="@+id/advice_iv_chef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Chef Dale Talde" />
+
+        <ImageView
+            android:id="@+id/advice_iv_star"
+            android:layout_width="@dimen/icon_star_size"
+            android:layout_height="@dimen/icon_star_size"
+            android:padding="@dimen/padding_default"
+            android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:padding="@dimen/padding_default"
-            android:text="Pentru chef Dale Talde, secretul este... masina de gatit orezul. “Este cea mai simpla si cea mai buna metoda. Vei obtine un orez gatit perfect de fiecare data”."
+            tools:text="Pentru chef Dale Talde, secretul este... masina de gatit orezul. “Este cea mai simpla si cea mai buna metoda. Vei obtine un orez gatit perfect de fiecare data”."
             android:textSize="@dimen/font_size_subhead"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -44,7 +54,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/dale_talde"
+            tools:src="@drawable/dale_talde"
             app:layout_constraintBottom_toTopOf="@+id/advice_tv_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

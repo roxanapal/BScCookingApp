@@ -56,8 +56,13 @@
     <string name="profile_gallery_picker_title">Selecteaza imagine</string>
 
     <string name="help_first_paragraph">Aplicația "LearnEAT" este adresată oamenilor care aleg să gătească acasă, în propria lor bucătărie. Aceasta va oferi asistență pe parcursul rețetei, astfel încât utilizatorul să fie motivat să o finalizeze conform pașilor oferiți de aceasta. Pentru a face lucrurile mai atractive, aplicația va fi prezentată sub formă de competiție, iar utilizatorul poate câștiga puncte pentru fiecare rețetă efectuată.</string>
-    <string name="upload_photo_subtitle">Încarcă fotografia cu rețeta efectuată de tine.</string>
+    <string name="upload_photo_subtitle">Pentru a finaliza rețeta și a primi punctele aferente acesteia, este necesar să încarci o fotografie cu rezultatul tău în urma efectuării acestei rețete.\nFelicitări!</string>
     <string name="upload_photo_button_label">Fotografiază preparatul</string>
     <string name="bitmap_utils_error">Eroare, nu se gaseste imaginea dorita.</string>
+    <string name="upload_photo_btn_save_photo">Salveaza fotografia</string>
+    <string name="feedback_btn_send_message">Trimite mesajul</string>
+    <string name="feedback_hint_message">Mesaj</string>
+    <string name="feedback_hint_subject">Subiect</string>
+    <string name="feedback_owner_email">roxanac.pal@gmail.com</string>
 
 </resources>

@@ -24,22 +24,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--<TextView
-                android:id="@+id/main_tv_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:lineSpacingExtra="@dimen/padding_default"
-                android:padding="@dimen/padding_xlarge"
-                android:text="@string/main_title"
-                android:textSize="@dimen/font_size_medium" />
--->
-            <!--<ImageView
-                android:id="@+id/main_iv_image"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@drawable/salad" />-->
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

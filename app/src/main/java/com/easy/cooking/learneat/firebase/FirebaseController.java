@@ -3,6 +3,7 @@ package com.easy.cooking.learneat.firebase;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.easy.cooking.learneat.models.Advice;
 import com.easy.cooking.learneat.models.CompletedRecipe;
 import com.easy.cooking.learneat.models.User;
 import com.easy.cooking.learneat.utils.Constants;
@@ -41,6 +42,13 @@ public class FirebaseController {
     public void getAllRecipes(ValueEventListener eventListener) {
         if(eventListener != null) {
             databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_RECIPE);
+        }
+        databaseReference.addValueEventListener(eventListener);
+    }
+
+    public void getAdviceList(ValueEventListener eventListener) {
+        if(eventListener != null) {
+            databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_ADVICE);
         }
         databaseReference.addValueEventListener(eventListener);
     }
@@ -93,5 +101,27 @@ public class FirebaseController {
     public void addCompletedRecipe(FirebaseUser firebaseUser, CompletedRecipe completedRecipe){
         databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
         databaseReference.child(firebaseUser.getUid()).child("completedRecipesGallery").push().setValue(completedRecipe);
+    }
+
+    public void updateFavoriteAdvice(Advice advice){
+        databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_ADVICE);
+        databaseReference.child(String.valueOf(advice.getIdAdvice())).child("favoriteAdvice").setValue(!advice.isFavoriteAdvice());
+    }
+
+    public void addNumberPoints(FirebaseUser firebaseUser, CompletedRecipe completedRecipe){
+        final int[] value = new int[1];
+        databaseReference = firebaseDatabase.getReference(Constants.TABLE_NAME_USER);
+        databaseReference.child(firebaseUser.getUid()).child("numberPoints").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                value[0] = dataSnapshot.getValue(Integer.TYPE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+        databaseReference.child(firebaseUser.getUid()).child("numberPoints").setValue(value[0] + completedRecipe.getNumberPoints());
     }
 }
