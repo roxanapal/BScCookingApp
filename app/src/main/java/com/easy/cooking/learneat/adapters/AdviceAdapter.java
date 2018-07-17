@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.easy.cooking.learneat.AdviceActivity;
 import com.easy.cooking.learneat.R;
 import com.easy.cooking.learneat.firebase.FirebaseController;
 import com.easy.cooking.learneat.models.Advice;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,6 +35,7 @@ public class AdviceAdapter extends RecyclerView.Adapter<AdviceAdapter.AdviceView
         this.context = context;
     }
 
+
     @NonNull
     @Override
     public AdviceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,13 +45,23 @@ public class AdviceAdapter extends RecyclerView.Adapter<AdviceAdapter.AdviceView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdviceViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final AdviceViewHolder holder, int position) {
         advice = adviceList.get(position);
         holder.tvNameChef.setText(advice.getNameChef());
         holder.tvAdviceDescription.setText(advice.getDescriptionAdvice());
         Picasso.get()
                 .load(advice.getUrlImageChef())
-                .into(holder.ivAdviceChef);
+                .into(holder.ivAdviceChef, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        holder.adviceProgressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+
+                    }
+                });
 
         if(advice.isFavoriteAdvice()){
             holder.ivAdviceStar.setImageDrawable(ActivityCompat.getDrawable(context, R.drawable.ic_star_yellow));
@@ -77,6 +90,9 @@ public class AdviceAdapter extends RecyclerView.Adapter<AdviceAdapter.AdviceView
 
         @BindView(R.id.advice_iv_star)
         ImageView ivAdviceStar;
+
+        @BindView(R.id.item_advice_progressbar)
+        ProgressBar adviceProgressBar;
 
         public AdviceViewHolder(View itemView) {
             super(itemView);

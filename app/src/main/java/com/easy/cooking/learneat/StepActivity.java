@@ -2,14 +2,11 @@ package com.easy.cooking.learneat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easy.cooking.learneat.models.Recipe;
@@ -78,7 +75,7 @@ public class StepActivity extends AppCompatActivity implements StepFragment.OnFr
 
             switchFragment(nextStep);
         } else {
-            Intent uploadPhototIntent = new Intent(StepActivity.this, UploadPhototActivity.class);
+            Intent uploadPhototIntent = new Intent(StepActivity.this, UploadPhotoActivity.class);
             uploadPhototIntent.putExtra(Constants.EXTRA_RECIPE, recipe);
             startActivity(uploadPhototIntent);
             finish();

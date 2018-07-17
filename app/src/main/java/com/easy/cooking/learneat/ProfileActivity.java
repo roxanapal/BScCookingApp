@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,12 +41,16 @@ import butterknife.ButterKnife;
 public class ProfileActivity extends AppCompatActivity {
 
     private static final String PROFILE_PHOTO_NAME = "profilePicture";
+    private static final String PROFILE_PHOTO_UPDATE_TOAST = "Fotografia de profil a fost schimbata cu succes!";
 
     @BindView(R.id.profile_toolbar)
     Toolbar profileToolbar;
 
     @BindView(R.id.iv_profile_picture)
     ImageView ivProfilePicture;
+
+    @BindView(R.id.fab_edit)
+    FloatingActionButton fabEdit;
 
     @BindView(R.id.tv_profile_username)
     TextView tvProfileUsername;
@@ -82,9 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         user = (User) intent.getBundleExtra(Constants.EXTRA_BUNDLE).getSerializable(Constants.EXTRA_PROFILE);
 
+        rvCompletedRecipes.setFocusable(false);
         setUserLayout();
 
-        ivProfilePicture.setOnClickListener(new View.OnClickListener() {
+        fabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openImagePicker();
@@ -107,9 +113,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
             CompletedRecipeAdapter adapter = new CompletedRecipeAdapter(completedRecipeList, this);
             rvCompletedRecipes.setNestedScrollingEnabled(false);
-            rvCompletedRecipes.setLayoutManager(new LinearLayoutManager(this));
+            rvCompletedRecipes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
             rvCompletedRecipes.setAdapter(adapter);
-
         }
 
     }
@@ -150,27 +155,26 @@ public class ProfileActivity extends AppCompatActivity {
 
                         UploadTask uploadTask = storage.getReference(userUid).child(PROFILE_PHOTO_NAME).putBytes(byteArray);
                         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                storage.getReference(userUid).child(PROFILE_PHOTO_NAME).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        Toast.makeText(ProfileActivity.this, "Upload cu succes", Toast.LENGTH_SHORT).show();
-                                        storage.getReference(userUid).child(PROFILE_PHOTO_NAME).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                                Toast.makeText(ProfileActivity.this, "Succes pe getURI:" + uri, Toast.LENGTH_LONG).show();
-                                                FirebaseController.getInstance().updateProfilePhoto(mAuth.getCurrentUser(), uri.toString());
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception exception) {
-                                                Toast.makeText(ProfileActivity.this, "Eroare uri", Toast.LENGTH_LONG).show();
-                                            }
-                                        });
+                                    public void onSuccess(Uri uri) {
+                                        Toast.makeText(ProfileActivity.this, PROFILE_PHOTO_UPDATE_TOAST, Toast.LENGTH_LONG).show();
+                                        FirebaseController.getInstance().updateProfilePhoto(mAuth.getCurrentUser(), uri.toString());
                                     }
-                                })
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception exception) {
+                                        Toast.makeText(ProfileActivity.this, R.string.error_uri, Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }
+                        })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(ProfileActivity.this, "Upload cu eroare", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProfileActivity.this, R.string.error_upload, Toast.LENGTH_SHORT).show();
                                     }
                                 });
 
@@ -179,7 +183,7 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.some_error, Toast.LENGTH_SHORT).show();
             }
         }
     }

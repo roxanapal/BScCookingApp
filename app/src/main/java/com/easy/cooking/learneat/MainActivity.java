@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Recipe> recipes = new ArrayList<>();
     private RecipeAdapter adapter;
-    private User user;
+    public static User user;
     private FirebaseUser firebaseUser;
 
     private View headerView;

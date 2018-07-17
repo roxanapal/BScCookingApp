@@ -65,4 +65,7 @@
     <string name="feedback_hint_subject">Subiect</string>
     <string name="feedback_owner_email">roxanac.pal@gmail.com</string>
 
+    <string name="error_uri">Eroare uri</string>
+    <string name="error_upload">Upload cu eroare</string>
+
 </resources>

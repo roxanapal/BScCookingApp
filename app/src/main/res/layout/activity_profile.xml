@@ -28,27 +28,31 @@
                 android:layout_height="@dimen/iv_profile_height"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/avatar_female"
+                tools:src="@drawable/userprofile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/iv_icon_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_action_edit"
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_edit_black_24dp"
+                app:backgroundTint="@android:color/white"
+                app:layout_goneMarginStart="@dimen/margin_xlarge"
+                app:fabSize="mini"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_profile_picture"
-                app:layout_constraintEnd_toEndOf="@+id/iv_profile_picture" />
+                app:layout_constraintEnd_toEndOf="@+id/iv_profile_picture"
+                app:layout_constraintStart_toEndOf="@+id/iv_profile_picture"
+                app:layout_constraintTop_toBottomOf="@+id/iv_profile_picture" />
 
             <TextView
                 android:id="@+id/tv_profile_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="roxana.pal"
+                android:layout_marginTop="@dimen/margin_large"
+                tools:text="roxana.pal"
                 android:textSize="@dimen/font_size_headline"
                 app:layout_constraintEnd_toEndOf="@+id/iv_profile_picture"
                 app:layout_constraintStart_toStartOf="@+id/iv_profile_picture"
@@ -81,8 +85,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_xlarge"
                 android:padding="@dimen/padding_default"
+                android:textStyle="bold|italic"
+                android:textSize="@dimen/font_size_subhead"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="@string/profile_gallery_photo_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_profile_points" />

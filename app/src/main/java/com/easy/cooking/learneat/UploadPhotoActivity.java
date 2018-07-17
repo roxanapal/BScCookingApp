@@ -44,7 +44,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class UploadPhototActivity extends AppCompatActivity {
+public class UploadPhotoActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 10;
     private static final int REQUEST_STORAGE_PERMISSION = 11;
@@ -220,13 +220,14 @@ public class UploadPhototActivity extends AppCompatActivity {
                                 pbUpload.setVisibility(View.GONE);
                                 uploadView.setVisibility(View.GONE);
                                 FirebaseController.getInstance().addCompletedRecipe(auth.getCurrentUser(), completedRecipe);
+                                FirebaseController.getInstance().addNumberPoints(auth.getCurrentUser(), MainActivity.user.getNumberPoints() + recipe.getPointsRecipe());
                                 finish();
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(UploadPhototActivity.this, "Eroare uri", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UploadPhotoActivity.this, R.string.error_uri, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -234,7 +235,7 @@ public class UploadPhototActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(UploadPhototActivity.this, "Upload cu eroare", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadPhotoActivity.this, R.string.error_upload, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -58,7 +58,7 @@
         <activity
             android:name=".FeedbackActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".UploadPhototActivity" />
+        <activity android:name=".UploadPhotoActivity" />
     </application>
 
 </manifest>
