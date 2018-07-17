@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/iv_profile_height"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/userprofile"
+                android:src="@drawable/userprofile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +67,7 @@
                 android:textSize="@dimen/font_size_medium"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_profile_username"
+                app:layout_constraintEnd_toStartOf="@id/tv_profile_points_label"
                 app:layout_constraintTop_toBottomOf="@+id/tv_profile_username"
                 tools:text="100" />
 

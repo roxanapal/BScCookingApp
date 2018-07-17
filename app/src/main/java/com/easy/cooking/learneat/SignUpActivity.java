@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void addUserToDatabase() {
         FirebaseController firebaseController = FirebaseController.getInstance();
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
-        String profilePhoto = "https://firebasestorage.googleapis.com/v0/b/learn-eat-app.appspot.com/o/profilephotos%2Fuserprofile.png?alt=media&token=365abd75-b368-4653-9f54-c96942145dbf";
+        String profilePhoto = "https://firebasestorage.googleapis.com/v0/b/learn-eat-app.appspot.com/o/profilephotos%2Fuserprofile.png?alt=media&token=549a29d5-4edb-4ba6-bf6d-c541ada25aa6";
 
         User userAuth = new User(firebaseUser.getUid(), username, password, email,0,null, profilePhoto, null);
         firebaseController.addUserToRealtimeDatabase(userAuth);
